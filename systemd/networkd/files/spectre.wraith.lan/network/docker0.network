@@ -1,5 +1,0 @@
-[Match]
-Name=docker0
-
-[Network]
-IPForward=yes
