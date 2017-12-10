@@ -8,6 +8,19 @@ Formula to set up and configure systemd including
   * timesyncd
   * resolved
 
+General customization strategies
+================================
+
+Because systemd config files aren't easy to recreate in jinja based on multiple
+keys and different needs, I'm using TOFS.
+
+_Template Override and Files Switch_ (TOFS) pattern as described in the
+documentation file `TOFS_pattern.md`.
+
+.. note::
+    See the full `Salt Formulas
+    <http://docs.saltstack.com/en/latest/topics/development/conventions/formulas.html>`_ doc.
+
 Available states
 ================
 
