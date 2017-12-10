@@ -1,0 +1,6 @@
+{% for section, sectioncontent in config.iteritems() -%}
+[{{ section }}]
+{% for key, value in sectioncontent.iteritems() -%}
+{{ key }}={{ value }}
+{% endfor %}
+{% endfor %}

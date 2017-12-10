@@ -1,0 +1,20 @@
+[Match]
+Name=ens*
+
+[Network]
+IPv6AcceptRA=true
+IPv6PrivacyExtensions=true
+DHCP=ipv6
+
+Address=192.168.178.8/24
+Gateway=192.168.178.1
+Address=2001:984:64C6:1::8/64
+
+DNS=194.109.6.66 194.109.9.99 194.109.104.104 2001:888:0:6::66 2001:888:0:9::99
+LLMNR=resolve
+DNSSEC=allow-downgrade
+NTP=ntp.xs4all.nl ntp2.xs4all.nl
+
+[DHCP]
+UseDNS=false
+UseNTP=false

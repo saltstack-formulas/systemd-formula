@@ -1,0 +1,6 @@
+[Match]
+Name=eno1
+
+[Network]
+Bridge=br0
+IPv6AcceptRA=false

@@ -1,0 +1,31 @@
+# OS parameters overriding common defaults(.yaml)
+  
+Debian:
+  pkgs_libs:
+    - libsystemd0
+  pkgs_extra:
+    - libnss-resolve
+    - python-systemd
+    - python3-systemd
+
+RedHat:
+  pkgs_libs: 
+    - systemd-libs
+  pkgs_extra: 
+    - systemd-python
+    - systemd-resolved
+    - systemd-networkd
+
+Arch:
+  pkgs_libs:
+    - libsystemd
+  pkgs_extra:
+    - python-systemd
+    - python2-systemd
+
+Suse:
+  pkgs_libs:
+    - libsystemd0
+  pkgs_extra:
+    - python-systemd
+    - util-linux-systemd

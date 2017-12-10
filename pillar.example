@@ -1,0 +1,17 @@
+systemd:
+  units:
+    service:
+      syncthing-someuser:
+        Unit:
+          Description: Syncthing P2P sync service for someuser
+          After: network.target
+  
+        Service:
+          ExecStart: /usr/bin/syncthing
+          User: someuser
+          Group: someuser
+          Environment: STNORESTART=yes HOME=/home/someuser
+  
+        Install:
+          WantedBy: multi-user.target
+  

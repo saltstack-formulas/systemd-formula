@@ -1,0 +1,27 @@
+[Match]
+Name=br0
+
+[Network]
+IPForward=yes
+IPv6AcceptRA=true
+IPv6PrivacyExtensions=true
+IPForward=yes
+IPMasquerade=yes
+DHCP=ipv6
+
+Address=192.168.178.3/24
+Gateway=192.168.178.1
+Address=2001:984:64c6:1::3/64
+
+DNS=194.109.6.66 194.109.9.99 194.109.104.104 2001:888:0:6::66 2001:888:0:9::99
+LLMNR=resolve
+DNSSEC=yes
+NTP=ntp.xs4all.nl ntp2.xs4all.nl
+
+[DHCP]
+UseDNS=false
+UseNTP=false
+
+[IPV6ACCEPTRA]
+UseDNS=false
+UseDomains=false

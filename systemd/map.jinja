@@ -1,0 +1,24 @@
+# -*- coding: utf-8 -*-
+# vim: ft=jinja
+
+{## Start with  defaults from defaults.sls ##}
+{% import_yaml 'systemd/defaults.yaml' as defaults %}
+{% import_yaml 'systemd/osmap.yaml' as osmap %}
+{% import_yaml 'systemd/codenamemap.yaml' as oscodenamemap %}
+
+
+{## Merge in systemd pillar ##}
+{% set systemd = salt['grains.filter_by'](
+    defaults,
+    merge=salt['grains.filter_by'](
+      osmap,
+      grain='os_family',
+      merge=salt['grains.filter_by'](
+        oscodenamemap,
+        grain='oscodename',
+        merge=salt['pillar.get']('systemd', {}),
+      ),
+    ),
+    base='systemd',
+)
+%}
