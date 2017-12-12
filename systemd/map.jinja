@@ -4,7 +4,7 @@
 {## Start with  defaults from defaults.sls ##}
 {% import_yaml 'systemd/defaults.yaml' as defaults %}
 {% import_yaml 'systemd/osmap.yaml' as osmap %}
-{% import_yaml 'systemd/codenamemap.yaml' as oscodenamemap %}
+{% import_yaml 'systemd/osnamemap.yaml' as osnamemap %}
 
 
 {## Merge in systemd pillar ##}
@@ -14,8 +14,8 @@
       osmap,
       grain='os_family',
       merge=salt['grains.filter_by'](
-        oscodenamemap,
-        grain='oscodename',
+        osnamemap,
+        grain='os',
         merge=salt['pillar.get']('systemd', {}),
       ),
     ),

@@ -1,7 +1,0 @@
-# OS parameters overriding common defaults(.yaml)
-  
-#Debian
-stretch: {}
-
-#ubuntu:
-xenial: {}
