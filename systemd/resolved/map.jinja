@@ -9,14 +9,14 @@
 
 {## setup variable using grains['os_family'] based logic ##}
 {% set os_family_map = salt['grains.filter_by']({
-        'Arch': {},
+        'Arch': {
+            'resolv_target': '/run/systemd/resolve/stub-resolv.conf',
+        },
         'RedHat': {
-            'resolv_file': '/etc/resolv.conf',
             'resolv_target': '/run/systemd/resolve/resolv.conf',
         },
         'Suse': {},
         'Debian': {
-            'resolv_file': '/etc/resolv.conf',
             'resolv_target': '/run/systemd/resolve/resolv.conf',
         },
   },
