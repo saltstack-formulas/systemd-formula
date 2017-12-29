@@ -27,5 +27,5 @@ Suse:
   pkgs_libs:
     - libsystemd0
   pkgs_extra:
-    - python-systemd
+    - python2-systemd
     - util-linux-systemd
