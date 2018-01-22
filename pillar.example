@@ -14,4 +14,13 @@ systemd:
   
         Install:
           WantedBy: multi-user.target
-  
+  networkd:
+    profiles:
+      network:
+        eth0:
+          Match:
+            Name: eth0
+          Network:
+            DHCP: "yes"
+            
+        
