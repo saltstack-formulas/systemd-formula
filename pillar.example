@@ -14,13 +14,36 @@ systemd:
   
         Install:
           WantedBy: multi-user.target
+
   networkd:
     profiles:
       network:
         eth0:
-          Match:
-            Name: eth0
-          Network:
-            DHCP: "yes"
+          - Match:
+            - Name: eth0
+          - Network:
+            - DHCP: "yes"
             
-        
+      netdev:
+        br0:
+          - Match:
+            - Name: br0
+            - Kind: bridge
+          - Bridge:
+            - HelloTimeSec: 0
+            - MaxAgeSec: 0
+            - ForwardDelaySec: 0
+            - STP: 'no'
+
+      link:
+        10-dmz:
+          - Match:
+            - MACAddress: '00:a0:de:63:7a:e6'
+          - Link:
+            - Name: dmz0
+        10-internet:
+          - Match:
+            - Path: 'pci-0000:00:1a.0-*'
+          - Link:
+            - Name: internet0
+
