@@ -1,0 +1,6 @@
+# -*- coding: utf-8 -*-
+# vim: ft=yaml
+networkd:
+  path: /etc/systemd/network
+  service: systemd-networkd
+  wait_online: True

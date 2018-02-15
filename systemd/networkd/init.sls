@@ -1,8 +1,9 @@
+{%- from "systemd/networkd/map.jinja" import networkd with context -%}
 {% from "systemd/networkd/macros.jinja" import files_switch with context -%}
 
 networkd:
   file.recurse:
-    - name: /etc/systemd/network
+    - name: {{ networkd.path }}
     - user: root
     - group: root
     - template: jinja
@@ -14,5 +15,12 @@ networkd:
     - listen_in:
       - service: networkd
   service.running:
-    - name: systemd-networkd
+    - name: {{ networkd.service }} 
     - enable: True
+
+{%- if networkd.wait_online is sameas true %}
+wait_online:
+  service.running:
+    - name: systemd-networkd-wait-online
+    - enable: True
+{%- endif %}
