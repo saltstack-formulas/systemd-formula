@@ -1,7 +1,7 @@
 {% for unittype, units in pillar['systemd:units'].iteritems()  %}
 {% for unit, unitconfig in units.iteritems() %}
 
-/lib/systemd/system/{{ unit }}.{{ unittype }}:
+/etc/systemd/system/{{ unit }}.{{ unittype }}:
   file.managed:
     - template: jinja
     - source: salt://systemd/unit.jinja
