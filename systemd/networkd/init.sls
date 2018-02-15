@@ -18,7 +18,7 @@ networkd:
     - name: {{ networkd.service }} 
     - enable: True
 
-{%- if networkd.wait_online is sameas true %}
+{%- if networkd.wait_online %}
 wait_online:
   service.running:
     - name: systemd-networkd-wait-online
