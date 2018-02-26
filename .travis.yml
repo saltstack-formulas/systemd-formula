@@ -3,7 +3,7 @@ services:
   - docker
 
 install:
+  - export BUNDLE_GEMFILE=$PWD/Gemfile
   - bundle install
 
-script: 
-  - kitchen test
+script: bundle exec kitchen verify ${INSTANCE}
