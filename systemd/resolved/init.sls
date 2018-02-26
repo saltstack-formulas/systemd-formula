@@ -20,6 +20,5 @@ resolv.conf:
     - name: {{ resolved.resolv_file }}
     - target: {{ resolved.resolv_target }}
     - force: True
-    - backupname: {{ resolved.resolv_file }}.backup
     - listen_in:
       - service: resolved
