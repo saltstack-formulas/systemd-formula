@@ -22,5 +22,6 @@ resolv.conf:
     - name: {{ resolved.resolv_file }}
     - target: {{ resolved.resolv_target }}
     - force: True
+    - backupname: /etc/resolv.conf.bak
     - listen_in:
       - service: resolved
