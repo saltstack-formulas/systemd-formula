@@ -11,12 +11,21 @@ driver_config:
     - SYS_PTRACE
 
 platforms:
-  - name: debian-9
+  - name: centos-7
+    driver_config:
+      provision_command:
+        - yum -y install initscripts && locale-gen en_US.UTF8
+      platform: rhel
+      run_command: /sbin/init
+      privileged: true
+      pid_one_command: /usr/lib/systemd/systemd
+  - name: ubuntu-16.04
     driver_config:
       provision_command:
         - apt-get update && apt-get install -y locales && locale-gen en_US.UTF-8
       run_command: /sbin/init
       pid_one_command: /usr/lib/systemd/systemd
+      privileged: true
 
 provisioner:
   name: salt_solo
@@ -42,4 +51,4 @@ provisioner:
         - systemd.resolved
 
 suites:
-  - name: debian
+  - name: default
