@@ -15,7 +15,7 @@ platforms:
 
 provisioner:
   name: salt_solo
-  log_level: innfo
+  log_level: info
   require_chef: false
   salt_version: latest
   formula: systemd
@@ -33,10 +33,6 @@ provisioner:
     base:
       '*':
         - systemd
-        - systemd.timesyncd
-        - systemd.networkd
-        - systemd.resolved
-        - systemd.units
 
 verifier:
   name: inspec
@@ -47,9 +43,9 @@ verifier:
     - path: test/integration/default
 
 suites:
- - name: deb
-   excludes:
-     - centos-7
+  - name: deb
+    excludes:
+      - centos-7
 
   - name: rpm
     excludes:
