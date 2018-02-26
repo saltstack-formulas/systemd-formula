@@ -1,0 +1,56 @@
+---
+driver:
+  name: docker
+
+driver_config:
+  use_sudo: false
+  privileged: true
+  provision_command: mkdir -p /run/sshd
+
+platforms:
+  - name: debian-9
+  - name: centos-7
+    driver_config:
+      image: saltstack/centos-7-minimal
+
+provisioner:
+  name: salt_solo
+  log_level: innfo
+  require_chef: false
+  salt_version: latest
+  formula: systemd
+  salt_copy_filter:
+    - .kitchen
+    - .git
+  pillars-from-files:
+    systemd.sls: pillar.example
+  pillars:
+    top.sls:
+      base:
+        '*':
+          - systemd
+  state_top:
+    base:
+      '*':
+        - systemd
+        - systemd.timesyncd
+        - systemd.networkd
+        - systemd.resolved
+        - systemd.units
+
+verifier:
+  name: inspec
+  sudo: false
+  # cli, documentation, html, progress, json, json-min, json-rspec, junit
+  format: cli
+  inspec_tests:
+    - path: test/integration/default
+
+suites:
+   - name: deb
+    excludes:
+      - centos-7
+
+  - name: rpm
+    excludes:
+      - debian-9
