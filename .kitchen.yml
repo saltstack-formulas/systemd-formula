@@ -36,7 +36,7 @@ provisioner:
         - systemd.networkd
 
 verifier:
-  name: inspec
+  name: serverspec
   sudo: false
   # cli, documentation, html, progress, json, json-min, json-rspec, junit
   format: cli

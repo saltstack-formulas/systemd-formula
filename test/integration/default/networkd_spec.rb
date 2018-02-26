@@ -1,3 +1,7 @@
+require 'serverspec'
+
+set :backend, :exec
+
 describe service('systemd-networkd') do
   it { should be_installed }
   it { should be_enabled }

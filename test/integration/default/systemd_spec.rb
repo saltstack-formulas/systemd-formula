@@ -1,7 +1,7 @@
-%w{
-  systemd
-}.each do |p|
-  describe package(p) do
-    it { should be_installed }
-  end
+require 'serverspec'
+
+set :backend, :exec
+
+describe package('systemd') do
+  it { should be_installed }
 end
