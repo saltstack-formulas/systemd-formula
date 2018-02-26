@@ -8,6 +8,8 @@ Formula to set up and configure systemd including
   * timesyncd
   * resolved
 
+.. image:: https://travis-ci.org/saltstack-formulas/systemd-formula.svg?branch=master
+
 General customization strategies
 ================================
 
