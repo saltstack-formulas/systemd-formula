@@ -3,19 +3,19 @@ driver:
   name: docker
 
 driver_config:
+  hostname: salt-formula.ci.local
   use_sudo: false
   privileged: true
-  provision_command: mkdir -p /run/sshd
+  require_chef_omnibus: false
+  cap_add:
+    - SYS_PTRACE
 
 platforms:
   - name: debian-9
   - name: centos-7
-    driver_config:
-      image: saltstack/centos-7-minimal
 
 provisioner:
   name: salt_solo
-  log_level: info
   require_chef: false
   salt_version: latest
   formula: systemd
