@@ -39,6 +39,7 @@ provisioner:
         - systemd
         - systemd.networkd
         - systemd.networkd.profiles
+        - systemd.resolved
 
 suites:
   - name: debian
