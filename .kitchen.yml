@@ -36,14 +36,6 @@ provisioner:
         - systemd.networkd
         - systemd.networkd.profiles
 
-verifier:
-  name: serverspec
-  sudo: false
-  # cli, documentation, html, progress, json, json-min, json-rspec, junit
-  format: cli
-  inspec_tests:
-    - path: test/integration/default
-
 suites:
   - name: deb
     excludes:

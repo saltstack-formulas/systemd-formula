@@ -1,11 +1,11 @@
 sudo: required
-cache: bundler
-language: ruby
-
 services:
   - docker
 
-before_install:
+install:
   - bundle install
+  - sudo pip install -r test-requirements.txt
+  - gitshelf install
 
-script: bundle exec kitchen verify
+script: 
+  - kitchen test
