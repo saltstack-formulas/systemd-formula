@@ -34,6 +34,7 @@ provisioner:
       '*':
         - systemd
         - systemd.networkd
+        - systemd.networkd.profiles
 
 verifier:
   name: serverspec
