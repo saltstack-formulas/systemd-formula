@@ -14,6 +14,8 @@ resolved:
   service.running:
     - name: systemd-resolved
     - enable: True
+    - require:
+      - file: resolv.conf
 
 resolv.conf:
   file.symlink:
