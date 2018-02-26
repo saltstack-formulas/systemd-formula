@@ -4,8 +4,6 @@ services:
 
 install:
   - bundle install
-  - sudo pip install -r test-requirements.txt
-  - gitshelf install
 
 script: 
   - kitchen test
