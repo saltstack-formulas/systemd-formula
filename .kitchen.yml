@@ -14,7 +14,7 @@ platforms:
   - name: centos-7
     driver_config:
       provision_command:
-        - yum -y install initscripts && locale-gen en_US.UTF8
+        - yum -y install initscripts 
       platform: rhel
       run_command: /sbin/init
       privileged: true
