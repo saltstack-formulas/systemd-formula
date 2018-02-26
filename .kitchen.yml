@@ -33,6 +33,7 @@ provisioner:
     base:
       '*':
         - systemd
+        - systemd.networkd
 
 verifier:
   name: inspec
