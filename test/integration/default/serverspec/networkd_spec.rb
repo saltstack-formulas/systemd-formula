@@ -10,13 +10,10 @@ describe file('/etc/systemd/network') do
 end
 
 describe service('systemd-networkd') do
-  it { should be_installed }
   it { should be_enabled }
   it { should be_running }
 end
 
 describe service('systemd-networkd-wait-online') do
-  it { should be_installed }
   it { should be_enabled }
-  it { should be_running }
 end
