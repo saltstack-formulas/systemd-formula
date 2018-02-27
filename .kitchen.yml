@@ -61,5 +61,4 @@ suites:
       bundler_path: '/usr/local/bin'
       rspec_path: '/usr/local/bin'
       env_vars:
-        TARGET_HOST: 127.0.0.1
         SUDO: true
