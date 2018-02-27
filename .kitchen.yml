@@ -49,5 +49,10 @@ provisioner:
         - systemd.networkd
         - systemd.networkd.profiles
 
+verifier:
+  name: serverspec
+  use_sudo: yes
+  sudo_path: true
+
 suites:
   - name: default
