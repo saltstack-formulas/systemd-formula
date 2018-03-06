@@ -1,10 +1,10 @@
-{% for unittype, units in pillar['systemd:units'].iteritems()  %}
+{% for unittype, units in pillar['systemd'].iteritems()  %}
 {% for unit, unitconfig in units.iteritems() %}
 
 /etc/systemd/system/{{ unit }}.{{ unittype }}:
   file.managed:
     - template: jinja
-    - source: salt://systemd/unit.jinja
+    - source: salt://systemd/units/unit.jinja
     - context:
         config: {{ unitconfig }}
     - watch_in:
