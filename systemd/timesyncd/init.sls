@@ -1,4 +1,3 @@
-{%- from "systemd/timesyncd/map.jinja" import timesyncd with context -%}
 {% from "systemd/timesyncd/macros.jinja" import files_switch with context -%}
 
 timesyncd:
@@ -13,8 +12,6 @@ timesyncd:
   service.running:
     - name: systemd-timesyncd
     - enable: True
-  timezone.system:
-    - name: {{ timesyncd.timezone }}
 
 # This is necessary in order to allow timesyncd to run on virtual machines.
 daemon-reload:
