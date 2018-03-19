@@ -1,0 +1,30 @@
+# -*- coding: utf-8 -*-
+# vim: ft=jinja
+
+{## Start with  defaults from defaults.sls ##}
+{% import_yaml 'systemd/timesyncd/defaults.yml' as default_settings %}
+
+{## Get lookup variables from pillar ##}
+{% set timesyncd_lookup = salt['pillar.get']('systemd:timesyncd:lookup', {}).copy() %}
+
+{## setup variable using grains['os_family'] based logic ##}
+{% set os_family_map = salt['grains.filter_by']({
+        'Arch': {},
+        'RedHat': {},
+        'Suse': {},
+        'Debian': {},
+  },
+  grain="os_family",
+  merge=timesyncd_lookup)
+%}
+
+{## Merge the flavor_map to the default settings ##}
+{% do default_settings.timesyncd.update(os_family_map) %}
+
+{## Merge in timesyncd pillar ##}
+{% set timesyncd = salt['pillar.get'](
+        'timesyncd',
+        default=default_settings.timesyncd,
+        merge=True
+    )
+%}
