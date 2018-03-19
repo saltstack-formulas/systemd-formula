@@ -46,7 +46,3 @@ systemd:
           - Link:
             - Name: internet0
 
-  timesyncd:
-    lookup:
-      timezone: 'UTC'
-
