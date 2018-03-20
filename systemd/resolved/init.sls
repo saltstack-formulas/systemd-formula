@@ -1,5 +1,5 @@
 {%- from "systemd/resolved/map.jinja" import resolved with context -%}
-{%- from "systemd/resolved/macros.jinja" import files_switch with context -%}
+{%- from "systemd/macros.jinja" import files_switch with context -%}
 
 resolved:
   file.managed:

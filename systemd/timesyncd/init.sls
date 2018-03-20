@@ -1,4 +1,4 @@
-{% from "systemd/timesyncd/macros.jinja" import files_switch with context -%}
+{% from "systemd/macros.jinja" import files_switch with context -%}
 
 timesyncd:
   file.managed:
