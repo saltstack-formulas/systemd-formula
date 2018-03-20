@@ -1,5 +1,5 @@
 {%- from "systemd/networkd/map.jinja" import networkd with context -%}
-{% from "systemd/networkd/macros.jinja" import files_switch with context -%}
+{% from "systemd/macros.jinja" import files_switch with context -%}
 
 networkd:
   file.recurse:
