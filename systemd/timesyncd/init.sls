@@ -1,6 +1,9 @@
 {% from "systemd/macros.jinja" import files_switch with context -%}
 {%- from "systemd/timesyncd/map.jinja" import timesyncd with context -%}
 
+{%- set virtual = salt['grains.get']('virtual') | default('physical', True) -%}
+{%- set virtual_subtype = salt['grains.get']('virtual_subtype') | default('', True) -%}
+
 timesyncd:
   file.managed:
     - name: /etc/systemd/timesyncd.conf
@@ -24,7 +27,7 @@ daemon-reload:
     - name: systemctl daemon-reload
     - runas: root
 
-{%- if grains['virtual'] != "physical" or grains['virtual_subtype'] == "Docker" %}
+{%- if virtual != "physical" or virtual_subtype == "Docker" %}
 timesyncd-allowvirtual:
   file.managed:
     - name: /etc/systemd/system/systemd-timesyncd.service.d/allowvirtual.conf
