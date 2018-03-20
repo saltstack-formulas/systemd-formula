@@ -7,14 +7,25 @@ driver_config:
   use_sudo: false
   privileged: true
   require_chef_omnibus: false
+  cap_add:
+    - SYS_PTRACE
 
 platforms:
-  - name: debian-stretch
+  - name: centos-7
+    driver_config:
+      provision_command:
+        - yum -y install initscripts 
+      platform: rhel
+      run_command: /usr/lib/systemd/systemd
+      privileged: true
+      pid_one_command: /usr/lib/systemd/systemd
+  - name: ubuntu-16.04
     driver_config:
       provision_command:
         - apt-get update && apt-get install -y locales && locale-gen en_US.UTF-8
-      run_command: /lib/systemd/systemd --system
+      run_command: /lib/systemd/systemd
       pid_one_command: /lib/systemd/systemd
+      privileged: true
 
 provisioner:
   name: salt_solo
@@ -37,12 +48,17 @@ provisioner:
         - systemd
         - systemd.networkd
         - systemd.networkd.profiles
-        - systemd.timesyncd
 
 verifier:
   name: serverspec
+  use_sudo: yes
+  sudo_path: true
 
 suites:
   - name: default
     verifier:
       default_pattern: true
+      bundler_path: '/usr/local/bin'
+      rspec_path: '/usr/local/bin'
+      env_vars:
+        SUDO: true
