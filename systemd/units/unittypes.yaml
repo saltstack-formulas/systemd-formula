@@ -1,0 +1,14 @@
+# Valid systemd unit types according to SYSTEMD.UNIT(5)
+
+Valid:
+  - service
+  - socket
+  - device
+  - mount
+  - automount
+  - swap
+  - target
+  - path
+  - timer
+  - slice
+  - scope
