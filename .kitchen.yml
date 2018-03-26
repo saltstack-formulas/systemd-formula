@@ -24,6 +24,14 @@ platforms:
         - locale-gen en_US.UTF-8
       run_command: /lib/systemd/systemd
       pid_one_command: /lib/systemd/systemd
+  - name: ubuntu-17.10
+    driver_config:
+      provision_command:
+        - apt-get update && apt-get install -y locales
+        - echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen
+        - locale-gen en_US.UTF-8
+      run_command: /lib/systemd/systemd
+      pid_one_command: /lib/systemd/systemd
 
 provisioner:
   name: salt_solo
@@ -62,6 +70,7 @@ suites:
       default_pattern: true
     includes:
       - debian-9
+      - ubuntu-17.10
     provisioner:
       state_top:
         base:
