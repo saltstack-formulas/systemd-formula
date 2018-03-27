@@ -65,6 +65,7 @@ suites:
             - systemd
             - systemd.networkd
             - systemd.networkd.profiles
+            - systemd.units
   - name: ntp
     verifier:
       default_pattern: true
@@ -79,3 +80,4 @@ suites:
             - systemd.networkd
             - systemd.networkd.profiles
             - systemd.timesyncd
+            - systemd.units
