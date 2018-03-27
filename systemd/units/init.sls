@@ -1,3 +1,6 @@
+include:
+  - systemd.reload
+
 {% import_yaml 'systemd/units/unittypes.yaml' as unittypes %}
 
 {% for unittype, units in pillar.get('systemd', {}).items()  %}
@@ -22,8 +25,4 @@ enable_{{ unit }}_{{ unittype }}:
     {% endfor %}
   {% endif %}
 {% endfor %}
-
-reload_systemd_configuration:
-  cmd.wait:
-    - name: systemctl daemon-reload
 
