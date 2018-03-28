@@ -1,3 +1,6 @@
+include:
+  - systemd.reload
+
 {% from "systemd/macros.jinja" import files_switch with context -%}
 {%- from "systemd/timesyncd/map.jinja" import timesyncd with context -%}
 
@@ -17,16 +20,11 @@ timesyncd:
     - name: systemd-timesyncd
     - enable: True
     - require:
-      - cmd: daemon-reload
+      - cmd: reload_systemd_configuration
   timezone.system:
     - name: {{ timesyncd.timezone }}
 
 # This is necessary in order to allow timesyncd to run on virtual machines.
-daemon-reload:
-  cmd.wait:
-    - name: systemctl daemon-reload
-    - runas: root
-
 {%- if virtual != "physical" or virtual_subtype == "Docker" %}
 timesyncd-allowvirtual:
   file.managed:
@@ -34,11 +32,11 @@ timesyncd-allowvirtual:
     - contents: "[Unit]\nConditionVirtualization="
     - makedirs: True
     - watch_in:
-      - cmd: daemon-reload
+      - cmd: reload_systemd_configuration
 {% else %}
 timesyncd-allowvirtual:
   file.absent:
     - name: /etc/systemd/system/systemd-timesyncd.service.d/allowvirtual.conf
     - watch_in:
-      - cmd: daemon-reload
+      - cmd: reload_systemd_configuration
 {% endif %}
