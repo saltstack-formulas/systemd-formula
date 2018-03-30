@@ -1,5 +1,5 @@
 {%- macro profile_block(config) %}
-    {% for sections in config %}
+    {%- for sections in config %}
         {%- for section, settings in sections.items() -%}
             {%- if settings is number or settings is string %}
 {{ section }} = {{ settings }}
