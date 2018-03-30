@@ -50,3 +50,6 @@ systemd:
     lookup:
       timezone: 'UTC'
 
+    files_switch:
+      - id
+      - os_family

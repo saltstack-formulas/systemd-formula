@@ -8,7 +8,7 @@ resolved:
     - group: root
     - mode: 644
     - template: jinja
-    - source: {{ files_switch('systemd/resolved', ['/resolved.conf']) }}
+    - source: {{ files_switch('systemd:resolved', ['/resolved.conf']) }}
     - listen_in:
       - service: resolved
   service.running:

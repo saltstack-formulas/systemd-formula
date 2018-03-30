@@ -7,7 +7,7 @@ networkd:
     - user: root
     - group: root
     - template: jinja
-    - source: {{ files_switch('systemd/networkd', ['/network']) }}
+    - source: {{ files_switch('systemd:networkd', ['/network']) }}
     - clean: True
     - dir_mode: 755
     - file_mode: 644
