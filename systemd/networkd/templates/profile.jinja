@@ -1,5 +1,5 @@
 {%- macro profile_block(config) %}
-    {% for sections in config %}
+    {%- for sections in config %}
         {%- for section, settings in sections.items() -%}
             {%- if settings is number or settings is string %}
 {{ section }} = {{ settings }}
@@ -9,7 +9,7 @@
                     {%- for key, value in setting.items() %}
                         {%- if value is number or value is string %}
 {{ key }}={{ value }}
-                        {%- elif value is iterable -%}
+                        {%- elif value is iterable %}
 {{ key }}={{ value|join(" ") }}
                         {%- endif -%}
                     {%- endfor -%}
