@@ -6,6 +6,7 @@ include:
 
 {%- set virtual = salt['grains.get']('virtual') | default('physical', True) -%}
 {%- set virtual_subtype = salt['grains.get']('virtual_subtype') | default('', True) -%}
+{%- set timezone = salt['pillar.get']('systemd:timesyncd:timezone') | default('UTC') -%}
 
 timesyncd:
   file.managed:
@@ -22,7 +23,7 @@ timesyncd:
     - require:
       - cmd: reload_systemd_configuration
   timezone.system:
-    - name: {{ timesyncd.timezone }}
+    - name: {{ timezone }}
 
 # This is necessary in order to allow timesyncd to run on virtual machines.
 {%- if virtual != "physical" or virtual_subtype == "Docker" %}
