@@ -47,8 +47,7 @@ systemd:
             - Name: internet0
 
   timesyncd:
-    lookup:
-      timezone: 'UTC'
+    timezone: 'UTC'
 
     files_switch:
       - id
