@@ -1,6 +1,7 @@
 include:
   - systemd.reload
 
+{% if salt['pillar.get']('systemd:networkd:profiles') is mapping %}
 {% for networkdprofile, profiles in salt['pillar.get']('systemd:networkd:profiles').items()  %}
   {% for profile, profileconfig in profiles.items() %}
 
@@ -14,4 +15,4 @@ include:
       - cmd: reload_systemd_configuration
   {% endfor %}
 {% endfor %}
-
+{% endif %}
