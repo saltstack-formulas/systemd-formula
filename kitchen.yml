@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+# vim: ft=yaml
 ---
 driver:
   name: docker
@@ -6,35 +8,42 @@ driver_config:
   hostname: salt-formula.ci.local
   use_sudo: false
   privileged: true
-  require_chef_omnibus: false
+  provision_command: mkdir -p /run/sshd
 
 platforms:
   - name: centos-7
     driver_config:
+      image: centos
       provision_command:
-        - yum -y install initscripts 
+        - yum -y update && yum reinstall -y glibc-common
+        - echo "LANG=en_US.UTF-8" >> /etc/locale.conf
+        - localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8
       platform: rhel
       run_command: /usr/lib/systemd/systemd
       pid_one_command: /usr/lib/systemd/systemd
   - name: debian-9
     driver_config:
       provision_command:
-        - apt-get update && apt-get install -y locales
+        - apt-get update  && apt-get install -y locales
         - echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen
         - locale-gen en_US.UTF-8
+      platform: debian
       run_command: /lib/systemd/systemd
       pid_one_command: /lib/systemd/systemd
-  - name: ubuntu-17.10
+  - name: ubuntu-18.04
     driver_config:
       provision_command:
-        - apt-get update && apt-get install -y locales
+        - apt-get update  && apt-get install -y locales && rm -rf /var/lib/apt/lists/*
+        - localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8
         - echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen
         - locale-gen en_US.UTF-8
+      platform: ubuntu
       run_command: /lib/systemd/systemd
       pid_one_command: /lib/systemd/systemd
 
 provisioner:
   name: salt_solo
+  log_level: debug
   require_chef: false
   salt_version: latest
   formula: systemd
@@ -50,14 +59,24 @@ provisioner:
           - systemd
 
 verifier:
-  name: serverspec
+  name: inspec
+  sudo: true
+  # cli, documentation, html, progress, json, json-min, json-rspec, junit
+  reporter:
+    - cli
 
 suites:
   - name: centos
     verifier:
       default_pattern: true
+      inspec_tests:
+        - path: test/integration/centos
     includes:
       - centos-7
+    excludes:
+      - debian-9
+      - ubuntu-18.04
+      - opensuse-leap
     provisioner:
       state_top:
         base:
@@ -66,11 +85,16 @@ suites:
             - systemd.networkd
             - systemd.networkd.profiles
             - systemd.units
-  - name: ntp
+  - name: debian
     verifier:
       default_pattern: true
+      inspec_tests:
+        - path: test/integration/debian
     includes:
       - debian-9
+    excludes:
+      - centos-7
+      - opensuse-leap
       - ubuntu-18.04
     provisioner:
       state_top:
@@ -80,4 +104,23 @@ suites:
             - systemd.networkd
             - systemd.networkd.profiles
             - systemd.timesyncd
+            - systemd.units
+  - name: ubuntu
+    verifier:
+      default_pattern: true
+      inspec_tests:
+        - path: test/integration/ubuntu
+    includes:
+      - ubuntu-18.04
+    excludes:
+      - debian-9
+      - centos-7
+      - opensuse-leap
+    provisioner:
+      state_top:
+        base:
+          '*':
+            - systemd
+            - systemd.networkd
+            - systemd.networkd.profiles
             - systemd.units

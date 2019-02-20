@@ -1,9 +1,22 @@
 sudo: required
+cache: bundler
+language: ruby
+
 services:
   - docker
 
 install:
-  - export BUNDLE_GEMFILE=$PWD/Gemfile
   - bundle install
 
-script: bundle exec kitchen verify ${INSTANCE}
+env:
+  matrix:
+    - INSTANCE: centos-7
+    - INSTANCE: debian-9
+    - INSTANCE: ubuntu-1804
+
+script: 
+  - bundle exec kitchen verify ${INSTANCE}
+
+before_deploy:
+  # Only deploy if the build passed successfully
+  - test $TRAVIS_TEST_RESULT = 0
