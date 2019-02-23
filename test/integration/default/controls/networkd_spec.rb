@@ -7,6 +7,41 @@ control 'Systemd Networkd' do
     its('owner') { should eq 'root' }
     its('group') { should eq 'root' }
   end
+
+  describe file('/etc/systemd/network/99-default.link') do
+    its('type') { should eq :file }
+    its('mode') { should cmp '0644' }
+    its('owner') { should eq 'root' }
+    its('group') { should eq 'root' }
+  end
+
+  describe file('/etc/systemd/network/eth0.network') do
+    its('type') { should eq :file }
+    its('mode') { should cmp '0644' }
+    its('owner') { should eq 'root' }
+    its('group') { should eq 'root' }
+  end
+
+  describe file('/etc/systemd/network/br0.netdev') do
+    its('type') { should eq :file }
+    its('mode') { should cmp '0644' }
+    its('owner') { should eq 'root' }
+    its('group') { should eq 'root' }
+  end
+
+  describe file('/etc/systemd/network/10-dmz.link') do
+    its('type') { should eq :file }
+    its('mode') { should cmp '0644' }
+    its('owner') { should eq 'root' }
+    its('group') { should eq 'root' }
+  end
+
+  describe file('/etc/systemd/network/10-internet.link') do
+    its('type') { should eq :file }
+    its('mode') { should cmp '0644' }
+    its('owner') { should eq 'root' }
+    its('group') { should eq 'root' }
+  end
   
   describe service('systemd-networkd') do
     it { should be_enabled }

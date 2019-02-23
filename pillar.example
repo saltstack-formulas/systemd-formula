@@ -1,4 +1,34 @@
+# -*- coding: utf-8 -*-
+# vim: ft=yaml
+---
 systemd:
+  ## tofs pattern
+  tofs:
+    # The files_switch key serves as a selector for alternative
+    # directories under the formula files directory. See TOFS pattern
+    # doc for more info.
+    # Note: Any value not evaluated by `config.get` will be used literally.
+    # This can be used to set custom paths, as many levels deep as required.
+    files_switch:
+      - any/path/can/be/used/here
+      - id
+      - osfinger
+      - os
+      - os_familly
+    # All aspects of path/file resolution are customisable using the options below.
+    # This is unnecessary in most cases; there are sensible defaults.
+    # dirs:
+    #   files: files_alt
+    #   default: default_alt
+    # files:
+    #   networkd:
+    #     - 'network'
+    #   resolved:
+    #     - 'resolved.conf'
+    #   timesyncd:
+    #     - 'timesyncd.conf'
+
+  ## systemd:units
   service:
     syncthing-someuser:
       Unit:
@@ -14,15 +44,22 @@ systemd:
       Install:
         WantedBy: multi-user.target
 
+  ## systemd:timesyncd
+  timesyncd:
+    timezone: 'UTC'
+
+  ## systemd:networkd
   networkd:
     profiles:
+      ## eth0.network
       network:
         eth0:
           - Match:
             - Name: eth0
           - Network:
             - DHCP: "yes"
-            
+
+      ## br0.netdev      
       netdev:
         br0:
           - Match:
@@ -33,22 +70,18 @@ systemd:
             - MaxAgeSec: 0
             - ForwardDelaySec: 0
             - STP: 'no'
-
+      
+      ## 10-dmz.link
       link:
         10-dmz:
           - Match:
             - MACAddress: '00:a0:de:63:7a:e6'
           - Link:
             - Name: dmz0
+
+      # 10-internet.link
         10-internet:
           - Match:
             - Path: 'pci-0000:00:1a.0-*'
           - Link:
             - Name: internet0
-
-  timesyncd:
-    timezone: 'UTC'
-
-    files_switch:
-      - id
-      - os_family

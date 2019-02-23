@@ -16,7 +16,7 @@ General customization strategies
 Because systemd config files aren't easy to recreate in jinja based on multiple
 keys and different needs, I'm using TOFS.
 
-_Template Override and Files Switch_ (TOFS) pattern as described in the
+`Template Override and Files Switch` (TOFS) pattern as described in the
 documentation file `TOFS_pattern.md`.
 
 We provide a little change to the original TOFS pattern, the
@@ -39,7 +39,7 @@ Available states
     :local:
 
 ``systemd``
-----------
+-----------
 
 Installs the systemd packages and libraries.
 
@@ -52,7 +52,7 @@ This state installs systemd-timesyncd and configures both NTP and timezone
 This state installs systemd-networkd and recursively adds files per os_family/minion_id
 
 ``systemd.networkd.profiles``
---------------------
+-----------------------------
 This state installs systemd-networkd profile files from pillar see pillar.example
 
 ``systemd.resolved``
