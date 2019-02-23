@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 # vim: ft=yaml
 ---
+# For help on this file's format, see https://kitchen.ci/
 driver:
   name: docker
 
@@ -15,7 +16,17 @@ platforms:
     driver_config:
       image: centos
       provision_command:
-        - yum -y update && yum reinstall -y glibc-common
+        - yum -y update && yum reinstall -y udev glibc-common
+        - echo "LANG=en_US.UTF-8" >> /etc/locale.conf
+        - localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8
+      platform: rhel
+      run_command: /usr/lib/systemd/systemd
+      pid_one_command: /usr/lib/systemd/systemd
+  - name: fedora
+    driver_config:
+      image: centos
+      provision_command:
+        - yum -y update && yum reinstall -y udev glibc-common
         - echo "LANG=en_US.UTF-8" >> /etc/locale.conf
         - localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8
       platform: rhel
@@ -24,7 +35,16 @@ platforms:
   - name: debian-9
     driver_config:
       provision_command:
-        - apt-get update  && apt-get install -y locales
+        - apt-get update && apt-get install -y udev locales
+        - echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen
+        - locale-gen en_US.UTF-8
+      platform: debian
+      run_command: /lib/systemd/systemd
+      pid_one_command: /lib/systemd/systemd
+  - name: debian-8
+    driver_config:
+      provision_command:
+        - apt-get update && apt-get install -y udev locales
         - echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen
         - locale-gen en_US.UTF-8
       platform: debian
@@ -33,13 +53,31 @@ platforms:
   - name: ubuntu-18.04
     driver_config:
       provision_command:
-        - apt-get update  && apt-get install -y locales && rm -rf /var/lib/apt/lists/*
+        - apt-get update && apt-get install -y udev locales && rm -rf /var/lib/apt/lists/*
         - localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8
         - echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen
         - locale-gen en_US.UTF-8
       platform: ubuntu
       run_command: /lib/systemd/systemd
       pid_one_command: /lib/systemd/systemd
+  - name: ubuntu-16.04
+    driver_config:
+      provision_command:
+        - apt-get update && apt-get install -y udev locales && rm -rf /var/lib/apt/lists/*
+        - localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8
+        - echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen
+        - locale-gen en_US.UTF-8
+      platform: ubuntu
+      run_command: /lib/systemd/systemd
+      pid_one_command: /lib/systemd/systemd
+  - name: opensuse-leap
+    driver_config:
+      image: opensuse-leap
+      run_command: /usr/lib/systemd/systemd
+      provision_command:
+        - zypper update -y && zypper install -y udev glibc-locale
+        - systemctl enable sshd.service
+
 
 provisioner:
   name: salt_solo
@@ -73,9 +111,12 @@ suites:
         - path: test/integration/centos
     includes:
       - centos-7
+      - fedora
     excludes:
       - debian-9
+      - debian-8
       - ubuntu-18.04
+      - ubuntu-16.04
       - opensuse-leap
     provisioner:
       state_top:
@@ -92,10 +133,13 @@ suites:
         - path: test/integration/debian
     includes:
       - debian-9
+      - debian-8
     excludes:
       - centos-7
+      - fedora
       - opensuse-leap
       - ubuntu-18.04
+      - ubuntu-16.04
     provisioner:
       state_top:
         base:
@@ -112,9 +156,12 @@ suites:
         - path: test/integration/ubuntu
     includes:
       - ubuntu-18.04
+      - ubuntu-16.04
     excludes:
       - debian-9
+      - debian-8
       - centos-7
+      - fedora
       - opensuse-leap
     provisioner:
       state_top:

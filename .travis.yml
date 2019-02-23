@@ -1,3 +1,6 @@
+stages:
+  - test
+
 sudo: required
 cache: bundler
 language: ruby
@@ -10,13 +13,13 @@ install:
 
 env:
   matrix:
-    - INSTANCE: centos-7
     - INSTANCE: debian-9
+    - INSTANCE: debian-8
     - INSTANCE: ubuntu-1804
+    - INSTANCE: ubuntu-1604
+    - INSTANCE: centos-7
+    - INSTANCE: fedora
+    - INSTANCE: opensuse-leap
 
 script: 
   - bundle exec kitchen verify ${INSTANCE}
-
-before_deploy:
-  # Only deploy if the build passed successfully
-  - test $TRAVIS_TEST_RESULT = 0
