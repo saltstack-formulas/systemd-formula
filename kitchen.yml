@@ -70,14 +70,14 @@ platforms:
       platform: ubuntu
       run_command: /lib/systemd/systemd
       pid_one_command: /lib/systemd/systemd
-  - name: opensuse-leap
+  - name: opensuse-42
     driver_config:
-      image: opensuse/leap
+      image: opensuse/salt-minion
       run_command: /usr/lib/systemd/systemd
+      platform: opensuse
       provision_command:
-        - zypper update -y && zypper install -y udev glibc-locale
+        - zypper update -y && zypper install -y udev glibc-locale lsb-release
         - systemctl enable sshd.service
-
 
 provisioner:
   name: salt_solo
