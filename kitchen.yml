@@ -72,7 +72,7 @@ platforms:
       pid_one_command: /lib/systemd/systemd
   - name: opensuse-leap
     driver_config:
-      image: opensuse-leap
+      image: opensuse/leap
       run_command: /usr/lib/systemd/systemd
       provision_command:
         - zypper update -y && zypper install -y udev glibc-locale
