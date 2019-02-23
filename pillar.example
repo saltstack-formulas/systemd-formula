@@ -1,4 +1,18 @@
+# -*- coding: utf-8 -*-
+# vim: ft=yaml
+---
 systemd:
+  ## tofs pattern
+  tofs:
+    files:
+      networkd:
+        - 'networkd'
+      resolved:
+        - 'resovled.conf'
+      timesyncd:
+        - 'timesyncd.conf'
+
+  ## systemd:units
   service:
     syncthing-someuser:
       Unit:
@@ -14,15 +28,22 @@ systemd:
       Install:
         WantedBy: multi-user.target
 
+  ## systemd:timesyncd
+  timesyncd:
+    timezone: 'UTC'
+
+  ## systemd:networkd
   networkd:
     profiles:
+      ## eth0.network
       network:
         eth0:
           - Match:
             - Name: eth0
           - Network:
             - DHCP: "yes"
-            
+
+      ## br0.netdev      
       netdev:
         br0:
           - Match:
@@ -33,22 +54,18 @@ systemd:
             - MaxAgeSec: 0
             - ForwardDelaySec: 0
             - STP: 'no'
-
+      
+      ## 10-dmz.link
       link:
         10-dmz:
           - Match:
             - MACAddress: '00:a0:de:63:7a:e6'
           - Link:
             - Name: dmz0
+
+      # 10-internet.link
         10-internet:
           - Match:
             - Path: 'pci-0000:00:1a.0-*'
           - Link:
             - Name: internet0
-
-  timesyncd:
-    timezone: 'UTC'
-
-    files_switch:
-      - id
-      - os_family
