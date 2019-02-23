@@ -114,3 +114,5 @@ verifier:
 
 suites:
   - name: default
+    exclude:
+      - debian-8
