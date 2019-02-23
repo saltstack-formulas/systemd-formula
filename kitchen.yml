@@ -95,6 +95,13 @@ provisioner:
       base:
         '*':
           - systemd
+  state_top:
+    base:
+      '*':
+        - systemd
+        - systemd.networkd
+        - systemd.networkd.profiles
+        - systemd.units
 
 verifier:
   name: inspec
@@ -102,72 +109,8 @@ verifier:
   # cli, documentation, html, progress, json, json-min, json-rspec, junit
   reporter:
     - cli
+  inspec_tests:
+    - path: test/integration/default
 
 suites:
-  - name: centos
-    verifier:
-      default_pattern: true
-      inspec_tests:
-        - path: test/integration/centos
-    includes:
-      - centos-7
-      - fedora
-    excludes:
-      - debian-9
-      - debian-8
-      - ubuntu-18.04
-      - ubuntu-16.04
-      - opensuse-leap
-    provisioner:
-      state_top:
-        base:
-          '*':
-            - systemd
-            - systemd.networkd
-            - systemd.networkd.profiles
-            - systemd.units
-  - name: debian
-    verifier:
-      default_pattern: true
-      inspec_tests:
-        - path: test/integration/debian
-    includes:
-      - debian-9
-      - debian-8
-    excludes:
-      - centos-7
-      - fedora
-      - opensuse-leap
-      - ubuntu-18.04
-      - ubuntu-16.04
-    provisioner:
-      state_top:
-        base:
-          '*':
-            - systemd
-            - systemd.networkd
-            - systemd.networkd.profiles
-            - systemd.timesyncd
-            - systemd.units
-  - name: ubuntu
-    verifier:
-      default_pattern: true
-      inspec_tests:
-        - path: test/integration/ubuntu
-    includes:
-      - ubuntu-18.04
-      - ubuntu-16.04
-    excludes:
-      - debian-9
-      - debian-8
-      - centos-7
-      - fedora
-      - opensuse-leap
-    provisioner:
-      state_top:
-        base:
-          '*':
-            - systemd
-            - systemd.networkd
-            - systemd.networkd.profiles
-            - systemd.units
+  - name: default
