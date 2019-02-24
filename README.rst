@@ -19,15 +19,6 @@ keys and different needs, I'm using TOFS.
 `Template Override and Files Switch` (TOFS) pattern as described in the
 documentation file `TOFS_pattern.md`.
 
-We provide a little change to the original TOFS pattern, the
-`files_switch` macro consider the `prefix` as a pillar and not just
-the directory path to the `files/` directory. It then replace any
-colon `:` with slash `/` to form the directory prefix.
-
-So, to configure the `files_switch` value of `systemd.networkd` you
-must define the pillar `systemd:networkd:files_switch`. Another
-example is provided in `pillar.example` for `systemd.timesyncd`.
-
 .. note::
     See the full `Salt Formulas
     <http://docs.saltstack.com/en/latest/topics/development/conventions/formulas.html>`_ doc.
