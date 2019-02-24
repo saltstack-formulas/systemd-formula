@@ -18,7 +18,7 @@ env:
     - INSTANCE: ubuntu-1604
     - INSTANCE: centos-7
     - INSTANCE: fedora
-    - INSTANCE: opensuse-leap
+    - INSTANCE: opensuse-42
 
 script: 
   - bundle exec kitchen verify ${INSTANCE}
