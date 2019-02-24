@@ -18,7 +18,7 @@ RedHat:
 
 Arch:
   pkgs_libs:
-    - libsystemd
+    - systemd-libs
   pkgs_extra:
     - python-systemd
     - python2-systemd
