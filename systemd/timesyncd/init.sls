@@ -1,14 +1,20 @@
 include:
   - systemd.reload
 
+{%- from "systemd/map.jinja" import systemd with context -%}
 {% from "systemd/macros.jinja" import files_switch with context -%}
-{%- from "systemd/timesyncd/map.jinja" import timesyncd with context -%}
+
+{%- set timesyncd = systemd.get('timesyncd', {}) %}
+{%- set timezone = timesynd.get('timezone', 'UTC') %}
 
 {%- set virtual = salt['grains.get']('virtual') | default('physical', True) -%}
 {%- set virtual_subtype = salt['grains.get']('virtual_subtype') | default('', True) -%}
-{%- set timezone = salt['pillar.get']('systemd:timesyncd:timezone') | default('UTC') -%}
 
 timesyncd:
+  {% if timesyncd.pkg %}
+  pkg.installed:
+    - name: {{ timesyncd.pkg }}
+  {% endif %}
   file.managed:
     - name: /etc/systemd/timesyncd.conf
     - source: {{ files_switch(

@@ -1,7 +1,13 @@
-{%- from "systemd/networkd/map.jinja" import networkd with context -%}
-{% from "systemd/macros.jinja" import files_switch with context -%}
+{%- from "systemd/map.jinja" import systemd with context -%}
+{%- from "systemd/macros.jinja" import files_switch with context -%}
+
+{%- set networkd = systemd.get('networkd', {}) %}
 
 networkd:
+  {% if networkd.pkg %}
+  pkg.installed:
+    - name: {{ networkd.pkg }}
+  {% endif %}
   file.recurse:
     - name: {{ networkd.path }}
     - user: root

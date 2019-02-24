@@ -1,9 +1,0 @@
-# OS parameters overriding common defaults(.yaml)
-
-# Fedora
-Fedora:
-  pkgs_libs: 
-    - systemd-libs
-  pkgs_extra: 
-    - python2-systemd
-    - python3-systemd
