@@ -17,7 +17,7 @@ include:
     - template: jinja
     - source: salt://systemd/networkd/templates/profile.jinja
     - context:
-        config: {{ profileconfig }}
+        config: {{ profileconfig|json }}
     - watch_in:
       - cmd: reload_systemd_configuration
   {% endfor %}
