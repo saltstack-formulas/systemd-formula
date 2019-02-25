@@ -9,7 +9,7 @@ networkd:
     - template: jinja
     - source: {{ files_switch(
                     salt['config.get'](
-                        tpldir ~ ':tofs:files:networkd',
+                        'systemd:tofs:files:networkd',
                         ['network']
                     )
               ) }}

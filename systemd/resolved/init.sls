@@ -10,7 +10,7 @@ resolved:
     - template: jinja
     - source: {{ files_switch(
                     salt['config.get'](
-                        tpldir ~ ':tofs:files:resolved',
+                        'systemd:tofs:files:resolved',
                         ['resolved.conf']
                     )
               ) }}
