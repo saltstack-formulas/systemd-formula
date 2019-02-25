@@ -19,7 +19,7 @@ timesyncd:
     - name: /etc/systemd/timesyncd.conf
     - source: {{ files_switch(
                     salt['config.get'](
-                        tpldir ~ ':tofs:files:timesyncd',
+                        'systemd:tofs:files:timesyncd',
                         ['timesyncd.conf']
                     )
               ) }}
