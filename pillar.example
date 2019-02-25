@@ -28,7 +28,7 @@ systemd:
     #   timesyncd:
     #     - 'timesyncd.conf'
 
-  ## systemd:units
+  ## units
   service:
     syncthing-someuser:
       Unit:
@@ -44,11 +44,11 @@ systemd:
       Install:
         WantedBy: multi-user.target
 
-  ## systemd:timesyncd
+  ## timesyncd
   timesyncd:
     timezone: 'UTC'
 
-  ## systemd:networkd
+  ## networkd
   networkd:
     profiles:
       ## eth0.network
