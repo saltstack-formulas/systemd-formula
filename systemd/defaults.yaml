@@ -4,3 +4,19 @@ systemd:
   pkg: systemd
   pkgs_libs: []
   pkgs_extra: []
+
+
+  timesyncd:
+    pkg: {}
+    timezone: 'UTC'
+
+  networkd:
+    pkg: {}
+    path: /etc/systemd/network
+    service: systemd-networkd
+    wait_online: True
+
+  resolved:
+    pkg: {}
+    resolv_file: /etc/resolv.conf
+    resolv_target: /usr/lib/systemd/resolv.conf

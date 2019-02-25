@@ -12,7 +12,7 @@ include:
     - template: jinja
     - source: salt://systemd/units/unit.jinja
     - context:
-        config: {{ unitconfig }}
+        config: {{ unitconfig|json }}
     - watch_in:
       - cmd: reload_systemd_configuration
 

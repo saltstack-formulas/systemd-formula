@@ -1,30 +1,16 @@
-# OS parameters overriding common defaults(.yaml)
-  
-Debian:
-  pkgs_libs:
-    - libsystemd0
-  pkgs_extra:
-    - libnss-resolve
-    - python-systemd
-    - python3-systemd
-
-RedHat:
+# -*- coding: utf-8 -*-
+# vim: ft=yaml
+#
+# Setup variables using grains['os'] based logic.
+# You just need to add the key:values for an `os` that differ
+# from `defaults.yaml` + `os_family.yaml`.
+# Only add an `os` which is/will be supported by the formula
+# (empty `os`es do not need to be listed, just added here as an example).
+---
+# os_family: RedHat
+Fedora:
   pkgs_libs: 
     - systemd-libs
   pkgs_extra: 
-    - systemd-python
-    - systemd-resolved
-    - systemd-networkd
-
-Arch:
-  pkgs_libs:
-    - systemd-libs
-  pkgs_extra:
-    - python-systemd
     - python2-systemd
-
-Suse:
-  pkgs_libs:
-    - libsystemd0
-  pkgs_extra:
-    - util-linux-systemd
+    - python3-systemd

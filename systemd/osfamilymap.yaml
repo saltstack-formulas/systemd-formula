@@ -1,0 +1,48 @@
+# -*- coding: utf-8 -*-                                                                                             
+# vim: ft=yaml
+#
+# Setup variables using grains['os_family'] based logic.
+# You just need to add the key:values for an `os_family` that differ
+# from `defaults.yaml`.
+# Only add an `os_family` which is/will be supported by the formula
+# (empty `os_family`s do not need to be listed, just added here as an example).
+---
+Debian:
+  pkgs_libs:
+    - libsystemd0
+  pkgs_extra:
+    - python-systemd
+    - python3-systemd
+  resolved:
+    pkg: libnss-resolve
+    resolv_target: /run/systemd/resolve/resolv.conf
+
+RedHat:
+  pkgs_libs: 
+    - systemd-libs
+  pkgs_extra: 
+    - systemd-python
+  resolved:
+    pkg: systemd-resolved
+    resolv_target: /run/systemd/resolve/resolv.conf
+  networkd:
+    pkg: systemd-networkd
+
+Arch:
+  pkgs_libs:
+    - systemd-libs
+  pkgs_extra:
+    - python-systemd
+    - python2-systemd
+  resolved:
+    resolv_target: /run/systemd/resolve/stub-resolv.conf
+
+Suse:
+  pkgs_libs:
+    - libsystemd0
+  pkgs_extra:
+    - util-linux-systemd
+  resolved:
+    pkg: nss-resolve
+
+

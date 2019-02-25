@@ -1,7 +1,13 @@
-{%- from "systemd/resolved/map.jinja" import resolved with context -%}
+{%- from "systemd/map.jinja" import systemd with context -%}
 {%- from "systemd/macros.jinja" import files_switch with context -%}
 
+{%- set resolved = systemd.get('resolved', {}) %}
+
 resolved:
+  {% if resolved.pkg %}
+  pkg.installed:
+    - name: {{ resolved.pkg }}
+  {% endif %}
   file.managed:
     - name: /etc/systemd/resolved.conf
     - user: root
