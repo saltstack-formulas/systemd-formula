@@ -14,7 +14,7 @@ driver_config:
 platforms:
   - name: centos-7
     driver_config:
-      image: centos
+      image: centos:7
       provision_command:
         - yum -y update && yum reinstall -y udev glibc-common
         - echo "LANG=en_US.UTF-8" >> /etc/locale.conf
@@ -24,15 +24,15 @@ platforms:
       pid_one_command: /usr/lib/systemd/systemd
   - name: fedora
     driver_config:
-      image: centos
+      image: fedora
       provision_command:
         - yum -y update && yum reinstall -y udev glibc-common
         - echo "LANG=en_US.UTF-8" >> /etc/locale.conf
-        - localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8
       platform: rhel
       run_command: /usr/lib/systemd/systemd
       pid_one_command: /usr/lib/systemd/systemd
   - name: debian-9
+    image: debian:9
     driver_config:
       provision_command:
         - apt-get update && apt-get install -y udev locales
@@ -43,6 +43,7 @@ platforms:
       pid_one_command: /lib/systemd/systemd
   - name: debian-8
     driver_config:
+      image: debian:jessie-backports
       provision_command:
         - apt-get update && apt-get install -y udev locales
         - echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen
@@ -52,6 +53,7 @@ platforms:
       pid_one_command: /lib/systemd/systemd
   - name: ubuntu-18.04
     driver_config:
+      image: ubuntu:18.04
       provision_command:
         - apt-get update && apt-get install -y udev locales && rm -rf /var/lib/apt/lists/*
         - localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8
@@ -62,6 +64,7 @@ platforms:
       pid_one_command: /lib/systemd/systemd
   - name: ubuntu-16.04
     driver_config:
+      image: ubuntu:16.04
       provision_command:
         - apt-get update && apt-get install -y udev locales && rm -rf /var/lib/apt/lists/*
         - localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8
