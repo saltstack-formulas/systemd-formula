@@ -1,7 +1,7 @@
 include:
   - systemd.reload
 
-{%- from "systemd/map.jinja" import systemd with context -%}
+{% from "systemd/map.jinja" import systemd with context -%}
 {% from "systemd/macros.jinja" import files_switch with context -%}
 
 {%- set timesyncd = systemd.get('timesyncd', {}) %}
