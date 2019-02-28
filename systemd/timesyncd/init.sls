@@ -5,7 +5,7 @@ include:
 {% from "systemd/macros.jinja" import files_switch with context -%}
 
 {%- set timesyncd = systemd.get('timesyncd', {}) %}
-{%- set timezone = timesynd.get('timezone', 'UTC') %}
+{%- set timezone = timesyncd.get('timezone', 'UTC') %}
 
 {%- set virtual = salt['grains.get']('virtual') | default('physical', True) -%}
 {%- set virtual_subtype = salt['grains.get']('virtual_subtype') | default('', True) -%}

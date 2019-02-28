@@ -13,6 +13,7 @@ install:
 
 env:
   matrix:
+    - INSTANCE: debian-8
     - INSTANCE: debian-9
     - INSTANCE: ubuntu-1804
     - INSTANCE: ubuntu-1604
