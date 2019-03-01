@@ -62,7 +62,7 @@ systemd:
       ## br0.netdev      
       netdev:
         br0:
-          - Match:
+          - NetDev:
             - Name: br0
             - Kind: bridge
           - Bridge:
