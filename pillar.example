@@ -20,7 +20,7 @@ systemd:
     # dirs:
     #   files: files_alt
     #   default: default_alt
-    # files:
+    # source_files:
     #   networkd:
     #     - 'network'
     #   resolved:
