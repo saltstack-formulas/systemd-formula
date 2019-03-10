@@ -16,7 +16,7 @@ resolved:
     - template: jinja
     - source: {{ files_switch(
                     salt['config.get'](
-                        'systemd:tofs:files:resolved',
+                        'systemd:tofs:source_files:resolved',
                         ['resolved.conf']
                     )
               ) }}

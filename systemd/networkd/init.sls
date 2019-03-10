@@ -15,7 +15,7 @@ networkd:
     - template: jinja
     - source: {{ files_switch(
                     salt['config.get'](
-                        'systemd:tofs:files:networkd',
+                        'systemd:tofs:source_files:networkd',
                         ['network']
                     )
               ) }}
