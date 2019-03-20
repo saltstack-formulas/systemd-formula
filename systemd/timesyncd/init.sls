@@ -18,7 +18,8 @@ timesyncd:
   file.managed:
     - name: /etc/systemd/timesyncd.conf
     - source: {{ files_switch(['timesyncd.conf'],
-                              lookup='timesyncd'
+                              lookup='timesyncd',
+                              v1_path_prefix = '/timesyncd'
                  )
               }}
   cmd.wait:
