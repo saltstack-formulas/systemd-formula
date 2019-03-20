@@ -17,12 +17,10 @@ timesyncd:
   {% endif %}
   file.managed:
     - name: /etc/systemd/timesyncd.conf
-    - source: {{ files_switch(
-                    salt['config.get'](
-                        'systemd:tofs:source_files:timesyncd',
-                        ['timesyncd.conf']
-                    )
-              ) }}
+    - source: {{ files_switch(['timesyncd.conf'],
+                              lookup='timesyncd'
+                 )
+              }}
   cmd.wait:
     - name: timedatectl set-ntp true
     - runas: root

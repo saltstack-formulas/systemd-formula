@@ -13,12 +13,10 @@ networkd:
     - user: root
     - group: root
     - template: jinja
-    - source: {{ files_switch(
-                    salt['config.get'](
-                        'systemd:tofs:source_files:networkd',
-                        ['network']
-                    )
-              ) }}
+    - source: {{ files_switch(['network'],
+                              lookup='networkd'
+                 )
+              }}
     - clean: True
     - dir_mode: 755
     - file_mode: 644

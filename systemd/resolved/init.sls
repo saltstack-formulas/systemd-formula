@@ -14,12 +14,10 @@ resolved:
     - group: root
     - mode: 644
     - template: jinja
-    - source: {{ files_switch(
-                    salt['config.get'](
-                        'systemd:tofs:source_files:resolved',
-                        ['resolved.conf']
-                    )
-              ) }}
+    - source: {{ files_switch(['resolved.conf'],
+                              lookup='resolved'
+                 )
+              }}
     - listen_in:
       - service: resolved
   service.running:
