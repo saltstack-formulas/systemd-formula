@@ -1,5 +1,5 @@
 {%- from "systemd/map.jinja" import systemd with context -%}
-{%- from "systemd/macros.jinja" import files_switch with context -%}
+{%- from "systemd/libtofs.jinja" import files_switch with context -%}
 
 {%- set networkd = systemd.get('networkd', {}) %}
 

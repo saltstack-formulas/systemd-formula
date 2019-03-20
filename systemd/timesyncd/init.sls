@@ -2,7 +2,7 @@ include:
   - systemd.reload
 
 {% from "systemd/map.jinja" import systemd with context -%}
-{% from "systemd/macros.jinja" import files_switch with context -%}
+{% from "systemd/libtofs.jinja" import files_switch with context -%}
 
 {%- set timesyncd = systemd.get('timesyncd', {}) %}
 {%- set timezone = timesyncd.get('timezone', 'UTC') %}
