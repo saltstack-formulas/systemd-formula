@@ -20,3 +20,16 @@ systemd:
     pkg: {}
     resolv_file: /etc/resolv.conf
     resolv_target: /usr/lib/systemd/resolv.conf
+    config:
+      DNS: '""'
+      FallbackDNS: '8.8.8.8 8.8.4.4 2001:4860:4860::8888 2001:4860:4860::8844'
+      Domains: '""'
+      LLMNR: 'yes'
+      MulticastDNS: 'yes'
+      DNSSEC: 'allow-downgrade'
+      DNSOverTLS: 'no'
+      Cache: 'yes'
+      DNSStubListener: 'udp'
+      ReadEtcHosts: 'yes'
+
+
