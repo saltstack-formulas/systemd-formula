@@ -1,5 +1,5 @@
 {%- from "systemd/map.jinja" import systemd with context -%}
-{%- from "systemd/macros.jinja" import files_switch with context -%}
+{%- from "systemd/libtofs.jinja" import files_switch with context -%}
 
 {%- set networkd = systemd.get('networkd', {}) %}
 
@@ -13,12 +13,11 @@ networkd:
     - user: root
     - group: root
     - template: jinja
-    - source: {{ files_switch(
-                    salt['config.get'](
-                        'systemd:tofs:source_files:networkd',
-                        ['network']
-                    )
-              ) }}
+    - source: {{ files_switch(['network'],
+                              lookup='networkd',
+                              v1_path_prefix = '/networkd'
+                 )
+              }}
     - clean: True
     - dir_mode: 755
     - file_mode: 644

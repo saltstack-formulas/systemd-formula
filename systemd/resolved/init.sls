@@ -1,5 +1,5 @@
 {%- from "systemd/map.jinja" import systemd with context -%}
-{%- from "systemd/macros.jinja" import files_switch with context -%}
+{%- from "systemd/libtofs.jinja" import files_switch with context -%}
 
 {%- set resolved = systemd.get('resolved', {}) %}
 
@@ -14,12 +14,11 @@ resolved:
     - group: root
     - mode: 644
     - template: jinja
-    - source: {{ files_switch(
-                    salt['config.get'](
-                        'systemd:tofs:source_files:resolved',
-                        ['resolved.conf']
-                    )
-              ) }}
+    - source: {{ files_switch(['resolved.conf'],
+                              lookup='resolved',
+                              v1_path_prefix = '/resolved'
+                 )
+              }}
     - listen_in:
       - service: resolved
   service.running:

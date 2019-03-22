@@ -308,18 +308,16 @@ We can simplify the ``conf.sls`` with the new ``files_switch`` macro to use in t
 
    {%- set tplroot = tpldir.split('/')[0] %}
    {%- from 'ntp/map.jinja' import ntp with context %}
-   {%- from 'ntp/macros.jinja' import files_switch %}
+   {%- from 'ntp/libtofs.jinja' import files_switch %}
 
    Configure NTP:
      file.managed:
        - name: {{ ntp.config }}
        - template: jinja
-       - source: {{ files_switch(
-                     salt['config.get'](
-                         tplroot ~ ':tofs:source_files:Configure NTP',
-                         ['/etc/ntp.conf.jinja']
-                     )
-               ) }}
+       - source: {{ files_switch(['/etc/ntp.conf.jinja'],
+                                 lookup='Configure NTP'
+                    )
+                 }}
        - watch_in:
          - service: Enable and start NTP service
        - require:
@@ -329,10 +327,10 @@ We can simplify the ``conf.sls`` with the new ``files_switch`` macro to use in t
 * This uses ``config.get``, searching for ``nfs:tofs:source_files:Configure NTP`` to determine the list of template files to use.
 * If this does not yield any results, the default of ``['/etc/ntp.conf.jinja']`` will be used.
 
-In ``macros.jinja``, we define this new macro ``files_switch``.
+In ``libtofs.jinja``, we define this new macro ``files_switch``.
 
-.. literalinclude:: ../template/macros.jinja
-   :caption: /srv/saltstack/salt-formulas/ntp-saltstack-formula/ntp/macros.jinja
+.. literalinclude:: ../template/libtofs.jinja
+   :caption: /srv/saltstack/salt-formulas/ntp-saltstack-formula/ntp/libtofs.jinja
    :language: jinja
 
 How to customise the ``source`` further
