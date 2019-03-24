@@ -1,9 +1,5 @@
 source "https://rubygems.org"
 
-gem "test-kitchen"
-gem "kitchen-docker"
-gem "kitchen-salt"
-gem "kitchen-inspec"
-gem "net-ssh"
-gem "serverspec"
-gem "kitchen-verifier-serverspec"
+gem 'kitchen-docker', '>= 2.9'
+gem 'kitchen-salt', '>= 0.5.0'
+gem 'kitchen-inspec', '>= 1.1'
