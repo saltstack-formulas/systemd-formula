@@ -1,12 +1,12 @@
-{%- from "systemd/map.jinja" import systemd with context -%}
+{%- from "systemd/map.jinja" import systemd with context %}
 {%- set resolved = systemd.get('resolved', {}) %}
 {%- set config = resolved.get('config', {}) %}
 
 resolved:
-  {% if resolved.pkg %}
+  {%- if resolved.pkg %}
   pkg.installed:
     - name: {{ resolved.pkg }}
-  {% endif %}
+  {%- endif %}
   ini.options_present:
     - name: /etc/systemd/resolved.conf
     - separator: '='

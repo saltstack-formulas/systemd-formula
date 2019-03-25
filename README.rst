@@ -44,15 +44,15 @@ This state installs systemd-networkd and recursively adds files per os_family/mi
 
 ``systemd.networkd.profiles``
 -----------------------------
-This state installs systemd-networkd profile files from pillar see pillar.example
+This state installs systemd-networkd profile files from pillar (see pillar.example)
 
 ``systemd.resolved``
 --------------------
-This state installs systemd-resolved  and recursively adds file per os_family/minion_id
+This state installs systemd-resolved and recursively adds files per os_family/minion_id
 
 ``systemd.resolved.config``
---------------------
-This state installs systemd-resolved and adds the resolved.conf from pillar see pillar.example
+---------------------------
+This state installs systemd-resolved and adds the resolved.conf from pillar (see pillar.example)
 
 ``systemd.units``
 -----------------
