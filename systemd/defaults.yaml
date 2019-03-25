@@ -22,14 +22,14 @@ systemd:
     resolv_target: /usr/lib/systemd/resolv.conf
     config:
       DNS: '""'
-      FallbackDNS: '8.8.8.8 8.8.4.4 2001:4860:4860::8888 2001:4860:4860::8844'
+      FallbackDNS: 8.8.8.8 8.8.4.4 2001:4860:4860::8888 2001:4860:4860::8844
       Domains: '""'
-      LLMNR: 'yes'
-      MulticastDNS: 'yes'
+      LLMNR: 'no'
+      MulticastDNS: 'no'
       DNSSEC: 'allow-downgrade'
-      DNSOverTLS: 'no'
+      DNSOverTLS: 'off'
       Cache: 'yes'
-      DNSStubListener: 'udp'
+      DNSStubListener: 'yes'
       ReadEtcHosts: 'yes'
 
 

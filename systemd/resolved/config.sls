@@ -13,16 +13,16 @@ resolved:
     - strict: True
     - sections:
         Resolve:
-          DNS: {{ config.DNS }}
-          FallbackDNS: {{ config.FallbackDNS }}
-          Domains: {{ config.Domains }}
-          LLMNR: {{ config.LLMNR }}
-          MulticastDNS: {{ config.MulticastDNS }}
-          DNSSEC: {{ config.DNSSEC }}
-          DNSOverTLS: {{ config.DNSOverTLS }}
-          Cache: {{ config.Cache }}
-          DNSStubListener: {{ config.DNSStubListener }}
-          ReadEtcHosts: {{ config.ReadEtcHosts }}
+          DNS: {{ config.DNS | yaml }}
+          FallbackDNS: {{ config.FallbackDNS | yaml }}
+          Domains: {{ config.Domains | yaml }}
+          LLMNR: {{ config.LLMNR | yaml }}
+          MulticastDNS: {{ config.MulticastDNS | yaml }}
+          DNSSEC: {{ config.DNSSEC | yaml }}
+          DNSOverTLS: {{ config.DNSOverTLS | yaml }}
+          Cache: {{ config.Cache | yaml }}
+          DNSStubListener: {{ config.DNSStubListener | yaml }}
+          ReadEtcHosts: {{ config.ReadEtcHosts | yaml }}
     - listen_in:
       - service: resolved
   service.running:
