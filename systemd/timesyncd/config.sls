@@ -48,7 +48,7 @@ timesyncd-allowvirtual:
     - makedirs: True
     - watch_in:
       - cmd: reload_systemd_configuration
-{% else %}
+{%- else %}
 timesyncd-allowvirtual:
   file.absent:
     - name: /etc/systemd/system/systemd-timesyncd.service.d/allowvirtual.conf
