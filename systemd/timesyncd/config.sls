@@ -2,7 +2,6 @@ include:
   - systemd.reload
 
 {%- from "systemd/map.jinja" import systemd with context %}
-{%- from "systemd/libtofs.jinja" import files_switch with context %}
 
 {%- set timesyncd = systemd.get('timesyncd', {}) %}
 {%- set timezone = timesyncd.get('timezone', 'UTC') %}
@@ -17,7 +16,6 @@ timesyncd:
     - name: {{ timesyncd.pkg }}
   {%- endif %}
   ini.options_present:
-  file.managed:
     - name: /etc/systemd/timesyncd.conf
     - separator: '='
     - strict: True
