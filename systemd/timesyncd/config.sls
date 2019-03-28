@@ -26,6 +26,8 @@ timesyncd:
           RootDistanceMaxSec: {{ config.RootDistanceMaxSec | yaml }}
           PollIntervalMinSec: {{ config.PollIntervalMinSec | yaml }}
           PollIntervalMaxSec: {{ config.PollIntervalMaxSec | yaml }}
+    - listen_in:
+      - service: timesyncd
   cmd.wait:
     - name: timedatectl set-ntp true
     - runas: root
