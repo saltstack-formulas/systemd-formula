@@ -1,21 +1,21 @@
 include:
   - systemd.reload
 
-{% from "systemd/map.jinja" import systemd with context -%}
-{% from "systemd/libtofs.jinja" import files_switch with context -%}
+{%- from "systemd/map.jinja" import systemd with context %}
+{%- from "systemd/libtofs.jinja" import files_switch with context %}
 
 {%- set timesyncd = systemd.get('timesyncd', {}) %}
 {%- set timezone = timesyncd.get('timezone', 'UTC') %}
 {%- set config = timesyncd.get('config', {}) %}
 
-{%- set virtual = salt['grains.get']('virtual') | default('physical', True) -%}
-{%- set virtual_subtype = salt['grains.get']('virtual_subtype') | default('', True) -%}
+{%- set virtual = salt['grains.get']('virtual') | default('physical', True) %}
+{%- set virtual_subtype = salt['grains.get']('virtual_subtype') | default('', True) %}
 
 timesyncd:
-  {% if timesyncd.pkg %}
+  {%- if timesyncd.pkg %}
   pkg.installed:
     - name: {{ timesyncd.pkg }}
-  {% endif %}
+  {%- endif %}
   ini.options_present:
   file.managed:
     - name: /etc/systemd/timesyncd.conf
@@ -56,4 +56,4 @@ timesyncd-allowvirtual:
     - name: /etc/systemd/system/systemd-timesyncd.service.d/allowvirtual.conf
     - watch_in:
       - cmd: reload_systemd_configuration
-{% endif %}
+{%- endif %}
