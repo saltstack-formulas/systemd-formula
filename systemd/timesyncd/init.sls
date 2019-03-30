@@ -1,20 +1,20 @@
 include:
   - systemd.reload
 
-{% from "systemd/map.jinja" import systemd with context -%}
-{% from "systemd/libtofs.jinja" import files_switch with context -%}
+{%- from "systemd/map.jinja" import systemd with context %}
+{%- from "systemd/libtofs.jinja" import files_switch with context %}
 
 {%- set timesyncd = systemd.get('timesyncd', {}) %}
 {%- set timezone = timesyncd.get('timezone', 'UTC') %}
 
-{%- set virtual = salt['grains.get']('virtual') | default('physical', True) -%}
-{%- set virtual_subtype = salt['grains.get']('virtual_subtype') | default('', True) -%}
+{%- set virtual = salt['grains.get']('virtual') | default('physical', True) %}
+{%- set virtual_subtype = salt['grains.get']('virtual_subtype') | default('', True) %}
 
 timesyncd:
-  {% if timesyncd.pkg %}
+  {%- if timesyncd.pkg %}
   pkg.installed:
     - name: {{ timesyncd.pkg }}
-  {% endif %}
+  {%- endif %}
   file.managed:
     - name: /etc/systemd/timesyncd.conf
     - source: {{ files_switch(['timesyncd.conf'],
@@ -22,6 +22,8 @@ timesyncd:
                               v1_path_prefix = '/timesyncd'
                  )
               }}
+    - listen_in:
+      - service: timesyncd
   cmd.wait:
     - name: timedatectl set-ntp true
     - runas: root
@@ -42,12 +44,9 @@ timesyncd-allowvirtual:
     - name: /etc/systemd/system/systemd-timesyncd.service.d/allowvirtual.conf
     - contents: "[Unit]\nConditionVirtualization="
     - makedirs: True
-    - watch_in:
-      - cmd: reload_systemd_configuration
-{% else %}
-timesyncd-allowvirtual:
+{%- else %}
   file.absent:
     - name: /etc/systemd/system/systemd-timesyncd.service.d/allowvirtual.conf
+{%- endif %}
     - watch_in:
       - cmd: reload_systemd_configuration
-{% endif %}
