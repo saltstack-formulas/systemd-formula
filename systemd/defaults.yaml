@@ -9,6 +9,7 @@ systemd:
   timesyncd:
     pkg: {}
     timezone: 'UTC'
+    config_source: file
     config:
       NTP: ''
       FallbackNTP: 0.pool.ntp.org 1.pool.ntp.org 2.pool.ntp.org 3.pool.ntp.org
@@ -23,6 +24,7 @@ systemd:
     wait_online: True
 
   resolved:
+    config_source: file
     pkg: {}
     resolv_file: /etc/resolv.conf
     resolv_target: /usr/lib/systemd/resolv.conf

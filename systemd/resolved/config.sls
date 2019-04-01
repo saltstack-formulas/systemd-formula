@@ -1,4 +1,6 @@
 {%- from "systemd/map.jinja" import systemd with context %}
+{%- from "systemd/libtofs.jinja" import files_switch with context -%}
+
 {%- set resolved = systemd.get('resolved', {}) %}
 {%- set config = resolved.get('config', {}) %}
 
@@ -7,6 +9,19 @@ resolved:
   pkg.installed:
     - name: {{ resolved.pkg }}
   {%- endif %}
+  {%- if resolved.config_source == 'file' %}
+  file.managed:
+    - name: /etc/systemd/resolved.conf
+    - user: root
+    - group: root
+    - mode: 644
+    - template: jinja
+    - source: {{ files_switch(['resolved.conf'],
+                              lookup='resolved',
+                              v1_path_prefix = '/resolved'
+                              )
+              }}
+  {%- elif resolved.config_source == 'pillar' %}
   ini.options_present:
     - name: /etc/systemd/resolved.conf
     - separator: '='
@@ -23,6 +38,7 @@ resolved:
           Cache: {{ config.Cache | yaml }}
           DNSStubListener: {{ config.DNSStubListener | yaml }}
           ReadEtcHosts: {{ config.ReadEtcHosts | yaml }}
+    {%- endif %}
     - listen_in:
       - service: resolved
   service.running:
