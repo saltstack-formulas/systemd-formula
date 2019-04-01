@@ -38,8 +38,8 @@ timesyncd:
     - name: {{ timezone }}
 
 # This is necessary in order to allow timesyncd to run on virtual machines.
-{%- if virtual != "physical" or virtual_subtype == "Docker" %}
 timesyncd-allowvirtual:
+{%- if virtual != "physical" or virtual_subtype == "Docker" %}
   file.managed:
     - name: /etc/systemd/system/systemd-timesyncd.service.d/allowvirtual.conf
     - contents: "[Unit]\nConditionVirtualization="
