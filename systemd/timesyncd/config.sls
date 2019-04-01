@@ -2,10 +2,10 @@ include:
   - systemd.reload
 
 {%- from "systemd/map.jinja" import systemd with context %}
-{%- from "systemd/libtofs.jinja" import files_switch with context %}
 
 {%- set timesyncd = systemd.get('timesyncd', {}) %}
 {%- set timezone = timesyncd.get('timezone', 'UTC') %}
+{%- set config = timesyncd.get('config', {}) %}
 
 {%- set virtual = salt['grains.get']('virtual') | default('physical', True) %}
 {%- set virtual_subtype = salt['grains.get']('virtual_subtype') | default('', True) %}
@@ -15,13 +15,17 @@ timesyncd:
   pkg.installed:
     - name: {{ timesyncd.pkg }}
   {%- endif %}
-  file.managed:
+  ini.options_present:
     - name: /etc/systemd/timesyncd.conf
-    - source: {{ files_switch(['timesyncd.conf'],
-                              lookup='timesyncd',
-                              v1_path_prefix = '/timesyncd'
-                 )
-              }}
+    - separator: '='
+    - strict: True
+    - sections:
+        Time:
+          NTP: {{ config.NTP | yaml }}
+          FallbackNTP: {{ config.FallbackNTP | yaml }}
+          RootDistanceMaxSec: {{ config.RootDistanceMaxSec | yaml }}
+          PollIntervalMinSec: {{ config.PollIntervalMinSec | yaml }}
+          PollIntervalMaxSec: {{ config.PollIntervalMaxSec | yaml }}
     - listen_in:
       - service: timesyncd
   cmd.wait:

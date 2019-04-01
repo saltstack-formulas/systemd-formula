@@ -61,6 +61,12 @@ systemd:
   ## timesyncd
   timesyncd:
     timezone: 'UTC'
+    config:
+      NTP: 0.europe.pool.ntp.org 1.europe.pool.ntp.org 2.europe.pool.ntp.org
+      FallbackNTP: 0.pool.ntp.org 1.pool.ntp.org 2.pool.ntp.org
+      RootDistanceMaxSec: 5
+      PollIntervalMinSec: 32
+      PollIntervalMaxSec: 2048
 
   ## networkd
   networkd:

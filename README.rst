@@ -38,6 +38,11 @@ Installs the systemd packages and libraries.
 ---------------------
 This state installs systemd-timesyncd and configures both NTP and timezone
 
+``systemd.timesyncd.config``
+----------------------------
+This state installs systemd-timesyncd and adds the timesyncd.conf from pillar
+(see pillar.example)
+
 ``systemd.networkd``
 --------------------
 This state installs systemd-networkd and recursively adds files per os_family/minion_id
