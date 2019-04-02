@@ -43,11 +43,11 @@ timesyncd:
     {%- endif %}
     - listen_in:
       - service: timesyncd
+    - watch_in:
+      - cmd: timesyncd
   cmd.wait:
     - name: timedatectl set-ntp true
     - runas: root
-    - watch:
-      - file: timesyncd
   service.running:
     - name: systemd-timesyncd
     - enable: True
