@@ -2,6 +2,7 @@ include:
   - systemd.reload
 
 {%- from "systemd/map.jinja" import systemd with context %}
+{%- from "systemd/libtofs.jinja" import files_switch with context %}
 
 {%- set timesyncd = systemd.get('timesyncd', {}) %}
 {%- set timezone = timesyncd.get('timezone', 'UTC') %}
@@ -15,6 +16,19 @@ timesyncd:
   pkg.installed:
     - name: {{ timesyncd.pkg }}
   {%- endif %}
+  {%- if timesyncd.config_source == 'file' %}
+  file.managed:
+    - name: /etc/systemd/timesyncd.conf
+    - user: root
+    - group: root
+    - mode: 644
+    - template: jinja
+    - source: {{ files_switch(['timesyncd.conf'],
+                              lookup='timesyncd',
+                              v1_path_prefix = '/timesyncd'
+                              )
+              }}
+  {%- elif timesyncd.config_source == 'pillar' %}
   ini.options_present:
     - name: /etc/systemd/timesyncd.conf
     - separator: '='
@@ -26,6 +40,7 @@ timesyncd:
           RootDistanceMaxSec: {{ config.RootDistanceMaxSec | yaml }}
           PollIntervalMinSec: {{ config.PollIntervalMinSec | yaml }}
           PollIntervalMaxSec: {{ config.PollIntervalMaxSec | yaml }}
+    {%- endif %}
     - listen_in:
       - service: timesyncd
   cmd.wait:

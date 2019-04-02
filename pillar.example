@@ -46,6 +46,7 @@ systemd:
 
   ## resolved
   resolved:
+    config_source: pillar
     config:
       DNS: 1.1.1.1 1.0.0.1 2606:4700:4700::1111 2606:4700:4700::1001
       FallbackDNS: 8.8.8.8 8.8.4.4 2001:4860:4860::8888 2001:4860:4860::8844
@@ -61,6 +62,7 @@ systemd:
   ## timesyncd
   timesyncd:
     timezone: 'UTC'
+    config_source: pillar
     config:
       NTP: 0.europe.pool.ntp.org 1.europe.pool.ntp.org 2.europe.pool.ntp.org
       FallbackNTP: 0.pool.ntp.org 1.pool.ntp.org 2.pool.ntp.org
