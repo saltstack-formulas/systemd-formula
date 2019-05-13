@@ -47,6 +47,7 @@ coverage.xml
 .hypothesis/
 .kitchen
 .kitchen.local.yml
+kitchen.local.yml
 
 # Translations
 *.mo
@@ -104,3 +105,6 @@ ENV/
 
 # Bundler
 Gemfile.lock
+
+# copied `.md` files used for conversion to `.rst` using `m2r`
+docs/*.md

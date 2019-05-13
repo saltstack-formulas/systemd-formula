@@ -324,7 +324,7 @@ We can simplify the ``conf.sls`` with the new ``files_switch`` macro to use in t
          - pkg: Install NTP package
 
 
-* This uses ``config.get``, searching for ``nfs:tofs:source_files:Configure NTP`` to determine the list of template files to use.
+* This uses ``config.get``, searching for ``ntp:tofs:source_files:Configure NTP`` to determine the list of template files to use.
 * If this does not yield any results, the default of ``['/etc/ntp.conf.jinja']`` will be used.
 
 In ``libtofs.jinja``, we define this new macro ``files_switch``.
@@ -432,7 +432,7 @@ The list of ``source_files`` can be given:
 Resulting in:
 
 .. code-block:: sls
-   
+
          - source:
            - salt://ntp/files/theminion/etc/ntp.conf.jinja
            - salt://ntp/files/theminion/etc/ntp.conf_alt.jinja
