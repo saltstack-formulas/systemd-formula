@@ -14,8 +14,7 @@ networkd:
     - group: root
     - template: jinja
     - source: {{ files_switch(['network'],
-                              lookup='networkd',
-                              v1_path_prefix = '/networkd'
+                              lookup='networkd'
                  )
               }}
     - clean: True

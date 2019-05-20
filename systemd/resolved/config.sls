@@ -17,8 +17,7 @@ resolved:
     - mode: 644
     - template: jinja
     - source: {{ files_switch(['resolved.conf'],
-                              lookup='resolved',
-                              v1_path_prefix = '/resolved'
+                              lookup='resolved'
                               )
               }}
   {%- elif resolved.config_source == 'pillar' %}
