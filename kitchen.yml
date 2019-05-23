@@ -4,89 +4,75 @@
 # For help on this file's format, see https://kitchen.ci/
 driver:
   name: docker
-
-driver_config:
-  hostname: salt-formula.ci.local
   use_sudo: false
   privileged: true
-  provision_command: mkdir -p /run/sshd
+  run_command: /lib/systemd/systemd
 
+# Make sure the platforms listed below match up with
+# the `env.matrix` instances defined in `.travis.yml`
 platforms:
-  - name: centos-7
-    driver_config:
-      image: centos:7
-      provision_command:
-        - yum -y update && yum reinstall -y udev glibc-common
-        - echo "LANG=en_US.UTF-8" >> /etc/locale.conf
-        - localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8
-      platform: rhel
+  ## SALT 2019.2
+  - name: debian-9-2019-2-py3
+    driver:
+      image: netmanagers/salt-2019.2-py3:debian-9
+  - name: ubuntu-1804-2019-2-py3
+    driver:
+      image: netmanagers/salt-2019.2-py3:ubuntu-18.04
+  - name: centos-7-2019-2-py3
+    driver:
+      image: netmanagers/salt-2019.2-py3:centos-7
+  - name: fedora-29-2019-2-py3
+    driver:
+      image: netmanagers/salt-2019.2-py3:fedora-29
+  - name: opensuse-leap-15-2019-2-py3
+    driver:
+      image: netmanagers/salt-2019.2-py3:opensuse-leap-15
       run_command: /usr/lib/systemd/systemd
-      pid_one_command: /usr/lib/systemd/systemd
-  - name: fedora
-    driver_config:
-      image: fedora
-      provision_command:
-        - yum -y update && yum reinstall -y udev glibc-common
-        - echo "LANG=en_US.UTF-8" >> /etc/locale.conf
-      platform: rhel
+
+  ## SALT 2018.3
+  - name: debian-9-2018-3-py2
+    driver:
+      image: netmanagers/salt-2018.3-py2:debian-9
+  - name: ubuntu-1604-2018-3-py2
+    driver:
+      image: netmanagers/salt-2018.3-py2:ubuntu-16.04
+  - name: centos-7-2018-3-py2
+    driver:
+      image: netmanagers/salt-2018.3-py2:centos-7
+  - name: fedora-29-2018-3-py2
+    driver:
+      image: netmanagers/salt-2018.3-py2:fedora-29
+  # TODO: Use this when fixed instead of `opensuse-leap-42`
+  # Ref: https://github.com/netmanagers/salt-image-builder/issues/2
+  # - name: opensuse-leap-15-2018-3-py2
+  #   driver:
+  #     image: netmanagers/salt-2018.3-py2:opensuse-leap-15
+  #     run_command: /usr/lib/systemd/systemd
+  - name: opensuse-leap-42-2018-3-py2
+    driver:
+      image: netmanagers/salt-2018.3-py2:opensuse-leap-42
       run_command: /usr/lib/systemd/systemd
-      pid_one_command: /usr/lib/systemd/systemd
-  - name: debian-9
-    driver_config:
-      image: debian:9
-      provision_command:
-        - apt-get update && apt-get install -y udev locales
-        - echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen
-        - locale-gen en_US.UTF-8
-      platform: debian
-      run_command: /lib/systemd/systemd
-      pid_one_command: /lib/systemd/systemd
-  - name: debian-8
-    driver_config:
-      image: debian:8
-      provision_command:
-        - apt-get update && apt-get install -y udev locales
-        - echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen
-        - locale-gen en_US.UTF-8
-      platform: debian
-      run_command: /lib/systemd/systemd
-      pid_one_command: /lib/systemd/systemd
-  - name: ubuntu-18.04
-    driver_config:
-      image: ubuntu:18.04
-      provision_command:
-        - apt-get update && apt-get install -y udev locales && rm -rf /var/lib/apt/lists/*
-        - localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8
-        - echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen
-        - locale-gen en_US.UTF-8
-      platform: ubuntu
-      run_command: /lib/systemd/systemd
-      pid_one_command: /lib/systemd/systemd
-  - name: ubuntu-16.04
-    driver_config:
-      image: ubuntu:16.04
-      provision_command:
-        - apt-get update && apt-get install -y udev locales && rm -rf /var/lib/apt/lists/*
-        - localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8
-        - echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen
-        - locale-gen en_US.UTF-8
-      platform: ubuntu
-      run_command: /lib/systemd/systemd
-      pid_one_command: /lib/systemd/systemd
-  - name: opensuse-42
-    driver_config:
-      image: opensuse/salt-minion
+
+  ## SALT 2017.7
+  - name: debian-8-2017-7-py2
+    driver:
+      image: netmanagers/salt-2017.7-py2:debian-8
+  - name: ubuntu-1604-2017-7-py2
+    driver:
+      image: netmanagers/salt-2017.7-py2:ubuntu-16.04
+  - name: fedora-28-2017-7-py2
+    driver:
+      image: netmanagers/salt-2017.7-py2:fedora-28
+  - name: opensuse-leap-42-2017-7-py2
+    driver:
+      image: netmanagers/salt-2017.7-py2:opensuse-leap-42
       run_command: /usr/lib/systemd/systemd
-      platform: opensuse
-      provision_command:
-        - zypper update -y && zypper install -y udev glibc-locale lsb-release
-        - systemctl enable sshd.service
 
 provisioner:
   name: salt_solo
-  log_level: debug
+  log_level: info
+  salt_install: none
   require_chef: false
-  salt_version: latest
   formula: systemd
   salt_copy_filter:
     - .kitchen
@@ -107,6 +93,7 @@ provisioner:
         - systemd.units
 
 verifier:
+  # https://www.inspec.io/
   name: inspec
   sudo: true
   # cli, documentation, html, progress, json, json-min, json-rspec, junit
