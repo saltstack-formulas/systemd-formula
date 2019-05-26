@@ -24,8 +24,7 @@ timesyncd:
     - mode: 644
     - template: jinja
     - source: {{ files_switch(['timesyncd.conf'],
-                              lookup='timesyncd',
-                              v1_path_prefix = '/timesyncd'
+                              lookup='timesyncd'
                               )
               }}
   {%- elif timesyncd.config_source == 'pillar' %}
