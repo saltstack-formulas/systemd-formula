@@ -2,6 +2,15 @@
 Changelog
 =========
 
+`0.12.1 <https://github.com/saltstack-formulas/systemd-formula/compare/v0.12.0...v0.12.1>`_ (2019-05-27)
+------------------------------------------------------------------------------------------------------------
+
+Documentation
+^^^^^^^^^^^^^
+
+
+* **tofs:** apply remaining comments from PR `#37 <https://github.com/saltstack-formulas/systemd-formula/issues/37>`_ (\ `d665676 <https://github.com/saltstack-formulas/systemd-formula/commit/d665676>`_\ )
+
 `0.12.0 <https://github.com/saltstack-formulas/systemd-formula/compare/v0.11.0...v0.12.0>`_ (2019-05-26)
 ------------------------------------------------------------------------------------------------------------
 
