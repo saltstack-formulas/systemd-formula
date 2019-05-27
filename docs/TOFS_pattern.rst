@@ -478,9 +478,9 @@ If your formula is composed of several components, you may prefer to provides fi
 
 For example, the following ``formula.component.config`` SLS:
 
-.. code-block::
+.. code-block:: sls
 
-   {%- from "formula/libtofs.jinja" import files_switch with context -%}
+   {%- from "formula/libtofs.jinja" import files_switch with context %}
 
    formula configuration file:
      file.managed:
@@ -494,12 +494,11 @@ For example, the following ``formula.component.config`` SLS:
                     )
                  }}
 
-will be rendered on a ``Debian`` named ``salt-formula.ci.local`` as:
+will be rendered on a ``Debian`` minion named ``salt-formula.ci.local`` as:
 
-.. code-block::
+.. code-block:: sls
 
    formula configuration file:
-
      file.managed:
        - name: /etc/formula.conf
        - user: root
