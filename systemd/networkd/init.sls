@@ -4,10 +4,11 @@
 {%- set networkd = systemd.get('networkd', {}) %}
 
 networkd:
-  {% if networkd.pkg %}
+  {%- if networkd.pkg %}
   pkg.installed:
     - name: {{ networkd.pkg }}
-  {% endif %}
+  {%- endif %}
+  {%- if networkd.profiles|length == 0 %}
   file.recurse:
     - name: {{ networkd.path }}
     - user: root
@@ -23,6 +24,7 @@ networkd:
     - include_empty: True
     - listen_in:
       - service: networkd
+  {%- endif %}
   service.running:
     - name: {{ networkd.service }} 
     - enable: True

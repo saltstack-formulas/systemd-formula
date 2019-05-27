@@ -16,6 +16,11 @@ include:
   file.managed:
     - template: jinja
     - source: salt://systemd/networkd/templates/profile.jinja
+    - user: root
+    - group: root
+    - mode: '0644'
+    - makedirs: true
+    - dir_mode: 755
     - context:
         config: {{ profileconfig|json }}
     - watch_in:

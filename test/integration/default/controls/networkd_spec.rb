@@ -9,10 +9,7 @@ control 'Systemd Networkd' do
   end
 
   describe file('/etc/systemd/network/99-default.link') do
-    its('type') { should eq :file }
-    its('mode') { should cmp '0644' }
-    its('owner') { should eq 'root' }
-    its('group') { should eq 'root' }
+    it { should_not exist }
   end
 
   describe file('/etc/systemd/network/eth0.network') do
