@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.12.2](https://github.com/saltstack-formulas/systemd-formula/compare/v0.12.1...v0.12.2) (2019-05-27)
+
+
+### Bug Fixes
+
+* **`networkd`:** don't remove files when using profiles ([93c29e2](https://github.com/saltstack-formulas/systemd-formula/commit/93c29e2))
+
 ## [0.12.1](https://github.com/saltstack-formulas/systemd-formula/compare/v0.12.0...v0.12.1) (2019-05-27)
 
 
