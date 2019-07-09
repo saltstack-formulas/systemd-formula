@@ -18,7 +18,7 @@ include:
 
 enable_{{ unit }}_{{ unittype }}:
   cmd.wait:
-    - name: systemctl enable {{ unit }}
+    - name: systemctl enable {{ unit }}.{{ unittype }}
     - watch:
       - cmd: reload_systemd_configuration
 

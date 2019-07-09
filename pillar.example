@@ -34,13 +34,22 @@ systemd:
       Unit:
         Description: Syncthing P2P sync service for someuser
         After: network.target
-  
+
       Service:
         ExecStart: /usr/bin/syncthing
         User: someuser
         Group: someuser
         Environment: STNORESTART=yes HOME=/home/someuser
-  
+
+      Install:
+        WantedBy: multi-user.target
+
+  path:
+    triger-service-on-changes:
+      Path:
+        PathModified: /path/to/watch
+        Unit: oneshot_service_to_trigger.service
+
       Install:
         WantedBy: multi-user.target
 
@@ -81,7 +90,7 @@ systemd:
           - Network:
             - DHCP: "yes"
 
-      ## br0.netdev      
+      ## br0.netdev
       netdev:
         br0:
           - NetDev:
@@ -92,7 +101,7 @@ systemd:
             - MaxAgeSec: 0
             - ForwardDelaySec: 0
             - STP: 'no'
-      
+
       ## 10-dmz.link
       link:
         10-dmz:
