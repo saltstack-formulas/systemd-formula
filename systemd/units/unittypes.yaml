@@ -1,3 +1,6 @@
+# -*- coding: utf-8 -*-
+# vim: ft=yaml
+---
 # Valid systemd unit types according to SYSTEMD.UNIT(5)
 
 Valid:
