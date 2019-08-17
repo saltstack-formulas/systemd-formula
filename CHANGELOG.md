@@ -1,5 +1,12 @@
 # Changelog
 
+# [0.13.0](https://github.com/saltstack-formulas/systemd-formula/compare/v0.12.3...v0.13.0) (2019-08-17)
+
+
+### Features
+
+* **yamllint:** include for this repo and apply rules throughout ([acbfdb3](https://github.com/saltstack-formulas/systemd-formula/commit/acbfdb3))
+
 ## [0.12.3](https://github.com/saltstack-formulas/systemd-formula/compare/v0.12.2...v0.12.3) (2019-07-21)
 
 

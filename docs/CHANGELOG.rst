@@ -2,6 +2,31 @@
 Changelog
 =========
 
+`0.13.0 <https://github.com/saltstack-formulas/systemd-formula/compare/v0.12.3...v0.13.0>`_ (2019-08-17)
+------------------------------------------------------------------------------------------------------------
+
+Features
+^^^^^^^^
+
+
+* **yamllint:** include for this repo and apply rules throughout (\ `acbfdb3 <https://github.com/saltstack-formulas/systemd-formula/commit/acbfdb3>`_\ )
+
+`0.12.3 <https://github.com/saltstack-formulas/systemd-formula/compare/v0.12.2...v0.12.3>`_ (2019-07-21)
+------------------------------------------------------------------------------------------------------------
+
+Bug Fixes
+^^^^^^^^^
+
+
+* **path:** specify unit type when enabling systemd unit (\ `7f5dd9b <https://github.com/saltstack-formulas/systemd-formula/commit/7f5dd9b>`_\ ), closes `#41 <https://github.com/saltstack-formulas/systemd-formula/issues/41>`_
+* **tofs:** reinstate custom TOFS files in this formula (\ `1b9b2b6 <https://github.com/saltstack-formulas/systemd-formula/commit/1b9b2b6>`_\ )
+
+Continuous Integration
+^^^^^^^^^^^^^^^^^^^^^^
+
+
+* **kitchen+travis:** modify matrix to include ``develop`` platform (\ `ac12027 <https://github.com/saltstack-formulas/systemd-formula/commit/ac12027>`_\ )
+
 `0.12.2 <https://github.com/saltstack-formulas/systemd-formula/compare/v0.12.1...v0.12.2>`_ (2019-05-27)
 ------------------------------------------------------------------------------------------------------------
 
