@@ -20,13 +20,13 @@ systemd:
     # dirs:
     #   files: files_alt
     #   default: default_alt
-    # source_files:
-    #   networkd:
-    #     - 'network'
-    #   resolved:
-    #     - 'resolved.conf'
-    #   timesyncd:
-    #     - 'timesyncd.conf'
+    source_files:
+      networkd:
+        - 'alt_network'
+      resolved:
+        - 'alt_resolved.conf'
+      timesyncd:
+        - 'alt_timesyncd.conf'
 
   ## units
   service:
@@ -82,37 +82,37 @@ systemd:
   ## networkd
   networkd:
     profiles:
-      ## eth0.network
       network:
+        # eth0.network
         eth0:
           - Match:
-            - Name: eth0
+              - Name: eth0
           - Network:
-            - DHCP: "yes"
+              - DHCP: "yes"
 
-      ## br0.netdev
       netdev:
+        # br0.netdev
         br0:
           - NetDev:
-            - Name: br0
-            - Kind: bridge
+              - Name: br0
+              - Kind: bridge
           - Bridge:
-            - HelloTimeSec: 0
-            - MaxAgeSec: 0
-            - ForwardDelaySec: 0
-            - STP: 'no'
+              - HelloTimeSec: 0
+              - MaxAgeSec: 0
+              - ForwardDelaySec: 0
+              - STP: 'no'
 
-      ## 10-dmz.link
       link:
+        # 10-dmz.link
         10-dmz:
           - Match:
-            - MACAddress: '00:a0:de:63:7a:e6'
+              - MACAddress: '00:a0:de:63:7a:e6'
           - Link:
-            - Name: dmz0
+              - Name: dmz0
 
-      # 10-internet.link
+        # 10-internet.link
         10-internet:
           - Match:
-            - Path: 'pci-0000:00:1a.0-*'
+              - Path: 'pci-0000:00:1a.0-*'
           - Link:
-            - Name: internet0
+              - Name: internet0

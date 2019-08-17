@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-                                                                                             
+# -*- coding: utf-8 -*-
 # vim: ft=yaml
 #
 # Setup variables using grains['os_family'] based logic.
@@ -18,9 +18,9 @@ Debian:
     resolv_target: /run/systemd/resolve/resolv.conf
 
 RedHat:
-  pkgs_libs: 
+  pkgs_libs:
     - systemd-libs
-  pkgs_extra: 
+  pkgs_extra:
     - systemd-python
   resolved:
     pkg: systemd-resolved
@@ -44,5 +44,3 @@ Suse:
     - util-linux-systemd
   resolved:
     pkg: nss-resolve
-
-
