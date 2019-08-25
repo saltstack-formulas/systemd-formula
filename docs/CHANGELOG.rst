@@ -2,6 +2,15 @@
 Changelog
 =========
 
+`0.13.1 <https://github.com/saltstack-formulas/systemd-formula/compare/v0.13.0...v0.13.1>`_ (2019-08-25)
+------------------------------------------------------------------------------------------------------------
+
+Documentation
+^^^^^^^^^^^^^
+
+
+* **readme:** update testing section (\ `9d4bd7e <https://github.com/saltstack-formulas/systemd-formula/commit/9d4bd7e>`_\ )
+
 `0.13.0 <https://github.com/saltstack-formulas/systemd-formula/compare/v0.12.3...v0.13.0>`_ (2019-08-17)
 ------------------------------------------------------------------------------------------------------------
 
