@@ -1,5 +1,5 @@
 {% from "systemd/map.jinja" import systemd with context %}
-  
+
 systemd_main_pkg:
   pkg.installed:
     - name: {{ systemd.pkg }}
