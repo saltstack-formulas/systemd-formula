@@ -27,7 +27,7 @@ networkd:
       - service: networkd
   {%- endif %}
   service.running:
-    - name: {{ networkd.service }} 
+    - name: {{ networkd.service }}
     - enable: True
 
 {%- if networkd.wait_online %}
