@@ -1,7 +1,7 @@
 name: systemd
 os: Debian, Ubuntu, RedHat, Fedora, CentOS, Suse, openSUSE, Arch
 os_family: Debian, RedHat, Suse, Arch
-version: 0.13.1
+version: 0.13.2
 release: 1
 minimum_version: 2016.11
 summary: Systemd formula
