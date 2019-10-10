@@ -1,13 +1,13 @@
 # -*- coding: utf-8 -*-
 # vim: ft=jinja
 
-{## Start with  defaults from defaults.sls ##}
+{#- Start with  defaults from defaults.sls #}
 {% import_yaml 'systemd/defaults.yaml' as default_settings %}
 {% import_yaml 'systemd/osfamilymap.yaml' as osfamilymap %}
 {% import_yaml 'systemd/osmap.yaml' as osmap %}
 {% import_yaml 'systemd/osfingermap.yaml' as osfingermap %}
 
-{## Merge in systemd pillar ##}
+{#- Merge in systemd pillar #}
 {% set defaults = salt['grains.filter_by'](default_settings,
     default='systemd',
     merge=salt['grains.filter_by'](osfamilymap, grain='os_family',

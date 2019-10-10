@@ -2,6 +2,30 @@
 Changelog
 =========
 
+`0.13.2 <https://github.com/saltstack-formulas/systemd-formula/compare/v0.13.1...v0.13.2>`_ (2019-10-10)
+------------------------------------------------------------------------------------------------------------
+
+Bug Fixes
+^^^^^^^^^
+
+
+* **init.sls:** fix ``salt-lint`` errors (\ ` <https://github.com/saltstack-formulas/systemd-formula/commit/0af5472>`_\ )
+* **init.sls:** fix ``salt-lint`` errors (\ ` <https://github.com/saltstack-formulas/systemd-formula/commit/8d98cae>`_\ )
+* **map.jinja:** fix ``salt-lint`` errors (\ ` <https://github.com/saltstack-formulas/systemd-formula/commit/68110aa>`_\ )
+
+Continuous Integration
+^^^^^^^^^^^^^^^^^^^^^^
+
+
+* **kitchen:** change ``log_level`` to ``debug`` instead of ``info`` (\ ` <https://github.com/saltstack-formulas/systemd-formula/commit/7c870eb>`_\ )
+* **kitchen:** install required packages to bootstrapped ``opensuse`` [skip ci] (\ ` <https://github.com/saltstack-formulas/systemd-formula/commit/f02b97e>`_\ )
+* **kitchen:** use bootstrapped ``opensuse`` images until ``2019.2.2`` [skip ci] (\ ` <https://github.com/saltstack-formulas/systemd-formula/commit/e084acd>`_\ )
+* **kitchen+travis:** replace EOL pre-salted images (\ ` <https://github.com/saltstack-formulas/systemd-formula/commit/d95f553>`_\ )
+* **platform:** add ``arch-base-latest`` (\ ` <https://github.com/saltstack-formulas/systemd-formula/commit/021c7d0>`_\ )
+* **yamllint:** add rule ``empty-values`` & use new ``yaml-files`` setting (\ ` <https://github.com/saltstack-formulas/systemd-formula/commit/f2582c6>`_\ )
+* merge travis matrix, add ``salt-lint`` & ``rubocop`` to ``lint`` job (\ ` <https://github.com/saltstack-formulas/systemd-formula/commit/a9f9889>`_\ )
+* use ``dist: bionic`` & apply ``opensuse-leap-15`` SCP error workaround (\ ` <https://github.com/saltstack-formulas/systemd-formula/commit/3ca9b60>`_\ )
+
 `0.13.1 <https://github.com/saltstack-formulas/systemd-formula/compare/v0.13.0...v0.13.1>`_ (2019-08-25)
 ------------------------------------------------------------------------------------------------------------
 
