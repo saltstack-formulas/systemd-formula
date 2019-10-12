@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.13.3](https://github.com/saltstack-formulas/systemd-formula/compare/v0.13.2...v0.13.3) (2019-10-12)
+
+
+### Bug Fixes
+
+* **rubocop:** add fixes using `rubocop --safe-auto-correct` ([](https://github.com/saltstack-formulas/systemd-formula/commit/a07960c))
+
+
+### Continuous Integration
+
+* merge travis matrix, add `salt-lint` & `rubocop` to `lint` job ([](https://github.com/saltstack-formulas/systemd-formula/commit/01790ff))
+* **travis:** merge `rubocop` linter into main `lint` job ([](https://github.com/saltstack-formulas/systemd-formula/commit/359e452))
+
 ## [0.13.2](https://github.com/saltstack-formulas/systemd-formula/compare/v0.13.1...v0.13.2) (2019-10-10)
 
 
