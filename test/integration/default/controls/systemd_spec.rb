@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 control 'Systemd package' do
   title 'should be installed'
 

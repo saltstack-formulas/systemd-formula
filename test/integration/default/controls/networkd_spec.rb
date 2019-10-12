@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 control 'Systemd Networkd' do
   title 'should match desired lines'
 
@@ -39,12 +41,12 @@ control 'Systemd Networkd' do
     its('owner') { should eq 'root' }
     its('group') { should eq 'root' }
   end
-  
+
   describe service('systemd-networkd') do
     it { should be_enabled }
     it { should be_running }
   end
-  
+
   describe service('systemd-networkd-wait-online') do
     it { should be_enabled }
   end
