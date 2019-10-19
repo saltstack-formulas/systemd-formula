@@ -1,5 +1,18 @@
 # Changelog
 
+# [0.14.0](https://github.com/saltstack-formulas/systemd-formula/compare/v0.13.3...v0.14.0) (2019-10-19)
+
+
+### Documentation
+
+* **contributing:** remove to use org-level file instead [skip ci] ([](https://github.com/saltstack-formulas/systemd-formula/commit/9bf7026))
+* **readme:** update link to `CONTRIBUTING` [skip ci] ([](https://github.com/saltstack-formulas/systemd-formula/commit/dfbd9e9))
+
+
+### Features
+
+* **centos-8:** support centos 8 ([](https://github.com/saltstack-formulas/systemd-formula/commit/7125240))
+
 ## [0.13.3](https://github.com/saltstack-formulas/systemd-formula/compare/v0.13.2...v0.13.3) (2019-10-12)
 
 
