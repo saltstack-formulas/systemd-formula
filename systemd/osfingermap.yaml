@@ -8,4 +8,12 @@
 # (empty `osfinger`s do not need to be listed, just added here as an example).
 ---
 Ubuntu-18.04: {}
-CentOS-7: {}
+CentOS Linux-8:
+  pkgs_lib:
+    - systemd-libs
+  pkgs_extra:
+    - python3-systemd
+  networkd:
+    pkg: {}
+  resolved:
+    pkg: {}
