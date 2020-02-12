@@ -93,10 +93,6 @@ platforms:
     # => SCP did not finish successfully (255):  (Net::SCP::Error)
     transport:
       max_ssh_sessions: 1
-  - name: amazonlinux-1-2018-3-py2
-    driver:
-      image: netmanagers/salt-2018.3-py2:amazonlinux-1
-      run_command: /sbin/init
   - name: arch-base-latest-2018-3-py2
     driver:
       image: netmanagers/salt-2018.3-py2:arch-base-latest
@@ -120,10 +116,6 @@ platforms:
     # => SCP did not finish successfully (255):  (Net::SCP::Error)
     transport:
       max_ssh_sessions: 1
-  - name: amazonlinux-1-2017-7-py2
-    driver:
-      image: netmanagers/salt-2017.7-py2:amazonlinux-1
-      run_command: /sbin/init
   - name: arch-base-latest-2017-7-py2
     driver:
       image: netmanagers/salt-2017.7-py2:arch-base-latest
