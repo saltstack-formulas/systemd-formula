@@ -1,5 +1,36 @@
 # Changelog
 
+## [0.14.1](https://github.com/saltstack-formulas/systemd-formula/compare/v0.14.0...v0.14.1) (2020-03-30)
+
+
+### Bug Fixes
+
+* **libtofs:** “files_switch” mess up the variable exported by “map.jinja” [skip ci] ([6dadf5d](https://github.com/saltstack-formulas/systemd-formula/commit/6dadf5dce2c1ef85b46cb812ef7bb2f12772cdb1))
+* **release.config.js:** use full commit hash in commit link [skip ci] ([bfad0ce](https://github.com/saltstack-formulas/systemd-formula/commit/bfad0ce6cee76e78818f25811e2e3162339cbdde))
+
+
+### Continuous Integration
+
+* **kitchen:** reinstall `udev` since removed from pre-salted images ([1e99a6f](https://github.com/saltstack-formulas/systemd-formula/commit/1e99a6f6864ff7bdf3853356d6352fd269b448fc))
+* workaround issues with newly introduced `amazonlinux-1` [skip ci] ([a7fe651](https://github.com/saltstack-formulas/systemd-formula/commit/a7fe6515d043490a37d1f92125060392586d8013))
+* **gemfile:** restrict `train` gem version until upstream fix [skip ci] ([abb7c16](https://github.com/saltstack-formulas/systemd-formula/commit/abb7c16ec3b2d61ea3eb1c799f04acb018aebf3a))
+* **kitchen:** avoid using bootstrap for `master` instances [skip ci] ([6c4e811](https://github.com/saltstack-formulas/systemd-formula/commit/6c4e81151f6cf1bb0638714038c6a772bfc7e9c2))
+* **kitchen:** use `debian-10-master-py3` instead of `develop` [skip ci] ([baaf5b3](https://github.com/saltstack-formulas/systemd-formula/commit/baaf5b3718359228a7d855f939ae941a71ec66d6))
+* **kitchen:** use `develop` image until `master` is ready (`amazonlinux`) [skip ci] ([b14b414](https://github.com/saltstack-formulas/systemd-formula/commit/b14b414c90022375136daa064b1c95b802d79c53))
+* **kitchen+travis:** upgrade matrix after `2019.2.2` release [skip ci] ([0fff6ac](https://github.com/saltstack-formulas/systemd-formula/commit/0fff6ac6fdbc22321e62ba7dd4493543fead95cb))
+* **travis:** apply changes from build config validation [skip ci] ([910654e](https://github.com/saltstack-formulas/systemd-formula/commit/910654e43ecd1b546f295ea97482fb7080960227))
+* **travis:** opt-in to `dpl v2` to complete build config validation [skip ci] ([9cbaced](https://github.com/saltstack-formulas/systemd-formula/commit/9cbaced8a330f08ec2d6af8c728bc182edc5e8a7))
+* **travis:** quote pathspecs used with `git ls-files` [skip ci] ([0a2547c](https://github.com/saltstack-formulas/systemd-formula/commit/0a2547c11339ad47684d67bd139de3c715477cd9))
+* **travis:** run `shellcheck` during lint job [skip ci] ([90976bb](https://github.com/saltstack-formulas/systemd-formula/commit/90976bb934571ed5ac09d8dafb1778ef1592d094))
+* **travis:** update `salt-lint` config for `v0.0.10` [skip ci] ([788b9ae](https://github.com/saltstack-formulas/systemd-formula/commit/788b9aee583f9d262893a7b98c05797011e7ca87))
+* **travis:** use `major.minor` for `semantic-release` version [skip ci] ([59f1b38](https://github.com/saltstack-formulas/systemd-formula/commit/59f1b3871f07359ce46742ecb7a86b4b5f0162e0))
+* **travis:** use build config validation (beta) [skip ci] ([dfa502a](https://github.com/saltstack-formulas/systemd-formula/commit/dfa502ae7d3f5f2b2c9e1714f99e7bfc91c011f0))
+
+
+### Performance Improvements
+
+* **travis:** improve `salt-lint` invocation [skip ci] ([0da36bb](https://github.com/saltstack-formulas/systemd-formula/commit/0da36bbcbbef3dbe8776b291ef3c7c96fd9888d1))
+
 # [0.14.0](https://github.com/saltstack-formulas/systemd-formula/compare/v0.13.3...v0.14.0) (2019-10-19)
 
 
