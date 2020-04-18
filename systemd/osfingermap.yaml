@@ -13,7 +13,5 @@ CentOS Linux-8:
     - systemd-libs
   pkgs_extra:
     - python3-systemd
-  networkd:
-    pkg: {}
   resolved:
     pkg: {}
