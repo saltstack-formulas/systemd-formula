@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.14.2](https://github.com/saltstack-formulas/systemd-formula/compare/v0.14.1...v0.14.2) (2020-04-18)
+
+
+### Bug Fixes
+
+* **centos-8:** fix systemd-networkd package installation ([f2025e3](https://github.com/saltstack-formulas/systemd-formula/commit/f2025e32a585ceb6a635ac92f66a3511cd167d34))
+
 ## [0.14.1](https://github.com/saltstack-formulas/systemd-formula/compare/v0.14.0...v0.14.1) (2020-03-30)
 
 
