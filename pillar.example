@@ -45,7 +45,7 @@ systemd:
         WantedBy: multi-user.target
 
   path:
-    triger-service-on-changes:
+    trigger-service-on-changes:
       Path:
         PathModified: /path/to/watch
         Unit: oneshot_service_to_trigger.service
