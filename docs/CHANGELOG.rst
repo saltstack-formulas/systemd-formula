@@ -2,6 +2,24 @@
 Changelog
 =========
 
+`0.15.0 <https://github.com/saltstack-formulas/systemd-formula/compare/v0.14.2...v0.15.0>`_ (2020-05-25)
+------------------------------------------------------------------------------------------------------------
+
+Continuous Integration
+^^^^^^^^^^^^^^^^^^^^^^
+
+
+* **gemfile.lock:** add to repo with updated ``Gemfile`` [skip ci] (\ `ff5d8b8 <https://github.com/saltstack-formulas/systemd-formula/commit/ff5d8b897f5c4cdcb30f1f2a3f8e1b516360825a>`_\ )
+* **kitchen+travis:** remove ``master-py2-arch-base-latest`` [skip ci] (\ `e75b92c <https://github.com/saltstack-formulas/systemd-formula/commit/e75b92c033242c69564719c803ffbdce54aa3b75>`_\ )
+* **travis:** add notifications => zulip [skip ci] (\ `92827e9 <https://github.com/saltstack-formulas/systemd-formula/commit/92827e9e3ee0f3a3a0d6620f7bb517b69609c3b8>`_\ )
+* **workflows/commitlint:** add to repo [skip ci] (\ `dbdb414 <https://github.com/saltstack-formulas/systemd-formula/commit/dbdb4147def0b8934e09ebc5e74b767a04db8cf9>`_\ )
+
+Features
+^^^^^^^^
+
+
+* **unit:** allow to start/stop, enable/disable services (\ `5f7d854 <https://github.com/saltstack-formulas/systemd-formula/commit/5f7d854f76f964fdaea6a5f56960343b48c72310>`_\ )
+
 `0.14.2 <https://github.com/saltstack-formulas/systemd-formula/compare/v0.14.1...v0.14.2>`_ (2020-04-18)
 ------------------------------------------------------------------------------------------------------------
 
