@@ -12,5 +12,26 @@ control 'Systemd units' do
 
   describe service('syncthing-someuser.service') do
     it { should be_enabled }
+    it { should_not be_running }
+  end
+
+  describe file('/etc/systemd/system/rsync.service') do
+    its('type') { should eq :file }
+    its('mode') { should cmp '0644' }
+    its('owner') { should eq 'root' }
+    its('group') { should eq 'root' }
+    its('content') { should_not include '[status]' }
+    its('content') { should_not include '[enabled]' }
+    its('content') { should include 'Documentation=man:rsync(1) man:rsyncd.conf(5)' }
+    its('content') { should include 'ConditionPathExists=/etc/rsyncd.conf' }
+    its('content') { should include 'ConditionPathExists=/etc/passwd' }
+    its('content') { should include 'ExecStart=/usr/bin/rsync --daemon --no-detach' }
+    its('content') { should include '[Install]' }
+    its('content') { should include 'WantedBy=multi-user.target' }
+  end
+
+  describe service('rsync.service') do
+    it { should be_enabled }
+    it { should be_running }
   end
 end

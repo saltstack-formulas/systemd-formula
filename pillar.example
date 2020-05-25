@@ -29,8 +29,19 @@ systemd:
         - 'alt_timesyncd.conf'
 
   ## units
+  # The valid units type are listed in
+  # https://github.com/saltstack-formulas/systemd-formula/blob/master/systemd/units/unittypes.yaml
   service:
     syncthing-someuser:
+      # these two parameters are passed to systemctl to manage the unit status
+      # (enabled / disabled) and (running / stopped) and are not passed to the
+      # service file contents.
+      # Default to
+      #   enabled: true
+      #   status: stop
+      # to be backward compatible
+      enabled: true
+      status: stop
       Unit:
         Description: Syncthing P2P sync service for someuser
         After: network.target
@@ -44,8 +55,27 @@ systemd:
       Install:
         WantedBy: multi-user.target
 
+    rsync:
+      status: start
+      Unit:
+        Description: fast remote file copy program daemon
+        Documentation: 'man:rsync(1) man:rsyncd.conf(5)'
+        ConditionPathExists:
+          - /etc/rsyncd.conf
+          - /etc/passwd
+        After: network.target
+      Service:
+        ExecStart: /usr/bin/rsync --daemon --no-detach
+      Install:
+        WantedBy: multi-user.target
+
   path:
     trigger-service-on-changes:
+      # this parameter is passed to systemctl to enable/disable the unit
+      # Defaults to
+      #   enabled: true
+      # to be backward compatible
+      # enabled: true
       Path:
         PathModified: /path/to/watch
         Unit: oneshot_service_to_trigger.service
