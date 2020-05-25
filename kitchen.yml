@@ -158,6 +158,7 @@ suites:
             - systemd
             - systemd.networkd
             - systemd.networkd.profiles
+            - rsync_test_package
             - systemd.units
       pillars:
         top.sls:
@@ -166,6 +167,9 @@ suites:
               - systemd
       pillars_from_files:
         systemd.sls: pillar.example
+      dependencies:
+        - name: rsync_test_package
+          path: test/salt/states
     verifier:
       inspec_tests:
         - path: test/integration/default

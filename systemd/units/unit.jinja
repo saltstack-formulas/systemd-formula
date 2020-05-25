@@ -1,6 +1,17 @@
-{% for section, sectioncontent in config.items() -%}
+#
+# This file managed by Salt, do not edit
+#
+{% for section, sectioncontent in config.items() %}
+  {%- if section not in ['enabled', 'status'] %}
 [{{ section }}]
-{% for key, value in sectioncontent.items() -%}
+    {%- for key, value in sectioncontent.items() %}
+      {%- if value is list %}
+        {%- for v in value %}
+{{ key }}={{ v }}
+        {%- endfor %}
+      {%- else %}
 {{ key }}={{ value }}
-{% endfor %}
+      {%- endif %}
+    {%- endfor %}
+  {%- endif %}
 {% endfor -%}
