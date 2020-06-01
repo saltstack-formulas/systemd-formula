@@ -12,7 +12,6 @@ Fedora:
   pkgs_libs:
     - systemd-libs
   pkgs_extra:
-    - python2-systemd
     - python3-systemd
   networkd:
     pkg: {}
