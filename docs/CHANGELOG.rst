@@ -2,6 +2,21 @@
 Changelog
 =========
 
+`0.16.0 <https://github.com/saltstack-formulas/systemd-formula/compare/v0.15.0...v0.16.0>`_ (2020-06-01)
+------------------------------------------------------------------------------------------------------------
+
+Continuous Integration
+^^^^^^^^^^^^^^^^^^^^^^
+
+
+* **kitchen+travis:** use latest pre-salted images (\ `a531d38 <https://github.com/saltstack-formulas/systemd-formula/commit/a531d38464eadef87802fa5a76ec5bfdad6199bd>`_\ )
+
+Features
+^^^^^^^^
+
+
+* **python3:** update for ``ubuntu-20.04`` & ``fedora-32`` (\ `7e719e0 <https://github.com/saltstack-formulas/systemd-formula/commit/7e719e0637700e99d3e85d888390ea10cc93dd6b>`_\ )
+
 `0.15.0 <https://github.com/saltstack-formulas/systemd-formula/compare/v0.14.2...v0.15.0>`_ (2020-05-25)
 ------------------------------------------------------------------------------------------------------------
 
