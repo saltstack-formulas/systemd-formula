@@ -19,6 +19,7 @@ Formula to set up and configure systemd including
   * networkd
   * timesyncd
   * resolved
+  * journald
 
 .. contents:: **Table of Contents**
 
@@ -66,6 +67,10 @@ Available states
 ^^^^^^^^^^^
 
 Installs the systemd packages and libraries.
+
+``systemd.journald``
+^^^^^^^^^^^^^^^^^^^^^
+This state manages systemd-journald configuration
 
 ``systemd.timesyncd``
 ^^^^^^^^^^^^^^^^^^^^^

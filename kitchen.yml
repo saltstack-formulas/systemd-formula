@@ -160,6 +160,7 @@ suites:
             - systemd
             - systemd.networkd
             - systemd.networkd.profiles
+            - systemd.journald
             - rsync_test_package
             - systemd.units
       pillars:
