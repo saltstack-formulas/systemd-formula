@@ -1,5 +1,27 @@
 # Changelog
 
+# [0.17.0](https://github.com/saltstack-formulas/systemd-formula/compare/v0.16.0...v0.17.0) (2020-09-19)
+
+
+### Bug Fixes
+
+* **resolved:** add missing header in config file ([ffa0d89](https://github.com/saltstack-formulas/systemd-formula/commit/ffa0d8957d9dc162545fdbcc7accdeca29283dc0))
+
+
+### Continuous Integration
+
+* **kitchen:** use `saltimages` Docker Hub where available [skip ci] ([5f1e3e8](https://github.com/saltstack-formulas/systemd-formula/commit/5f1e3e89260e1852c93f566e91a2b4f4a7a2d517))
+
+
+### Features
+
+* **journald:** add service management ([32d2e70](https://github.com/saltstack-formulas/systemd-formula/commit/32d2e70d21a2a99cc0c5455601d478db0e00cda5))
+
+
+### Styles
+
+* **libtofs.jinja:** use Black-inspired Jinja formatting [skip ci] ([d633daf](https://github.com/saltstack-formulas/systemd-formula/commit/d633daffc6565332a9e4b24231f25a75356609b9))
+
 # [0.16.0](https://github.com/saltstack-formulas/systemd-formula/compare/v0.15.0...v0.16.0) (2020-06-01)
 
 
