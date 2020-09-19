@@ -40,3 +40,10 @@ systemd:
       Cache: 'yes'
       DNSStubListener: 'yes'
       ReadEtcHosts: 'yes'
+
+  journald:
+    config_source: file
+    config:
+      Storage: auto
+      Compress: 'yes'
+      Seal: 'yes'

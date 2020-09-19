@@ -146,3 +146,31 @@ systemd:
               - Path: 'pci-0000:00:1a.0-*'
           - Link:
               - Name: internet0
+
+  ## journald
+  journald:
+    config_source: pillar
+    config:
+      SplitMode: uid
+      SyncIntervalSec: 5m
+      RateLimitIntervalSec: 30s
+      RateLimitBurst: 10000
+      SystemMaxUse: 2g
+      SystemKeepFree: 3g
+      SystemMaxFileSize: 4g
+      SystemMaxFiles: 100
+      RuntimeMaxFiles: 100
+      MaxFileSec: 1month
+      ForwardToSyslog: 'yes'
+      ForwardToKMsg: 'no'
+      ForwardToConsole: 'no'
+      ForwardToWall: 'yes'
+      TTYPath: /dev/console
+      MaxLevelStore: debug
+      MaxLevelSyslog: debug
+      MaxLevelKMsg: notice
+      MaxLevelConsole: info
+      MaxLevelWall: emerg
+      LineMax: 48K
+      ReadKMsg: 'yes'
+      Audit: 'no'
