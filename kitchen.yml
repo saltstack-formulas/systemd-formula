@@ -339,6 +339,7 @@ suites:
       state_top:
         base:
           '*':
+            - systemd._mapdata
             - systemd
             - systemd.networkd
             - systemd.networkd.profiles
