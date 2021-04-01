@@ -69,6 +69,16 @@ systemd:
       Install:
         WantedBy: multi-user.target
 
+    systemd-journald:
+      enabled: true
+      status: start
+      dropin: true
+      Unit:
+        Description: Fancy new description
+      Service:
+        WatchdocSec: 2min
+        RestartSec: 2
+
   path:
     trigger-service-on-changes:
       # this parameter is passed to systemctl to enable/disable the unit
