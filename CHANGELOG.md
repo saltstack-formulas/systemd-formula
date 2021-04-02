@@ -1,5 +1,37 @@
 # Changelog
 
+# [0.18.0](https://github.com/saltstack-formulas/systemd-formula/compare/v0.17.0...v0.18.0) (2021-04-02)
+
+
+### Bug Fixes
+
+* **fedora:** ensure `networkd` package is installed for Fedora 33 ([54be05c](https://github.com/saltstack-formulas/systemd-formula/commit/54be05c83309875fcad39daff7317ae3d5b15b8a))
+
+
+### Continuous Integration
+
+* **commitlint:** ensure `upstream/master` uses main repo URL [skip ci] ([0990fd6](https://github.com/saltstack-formulas/systemd-formula/commit/0990fd63b6a0712c025d01ea6a9e1b620e27a830))
+* **gemfile+lock:** use `ssf` customised `kitchen-docker` repo [skip ci] ([f433c36](https://github.com/saltstack-formulas/systemd-formula/commit/f433c369ee50fffaea4e9231d70a71b433599439))
+* **gitlab-ci:** add `rubocop` linter (with `allow_failure`) [skip ci] ([f501d91](https://github.com/saltstack-formulas/systemd-formula/commit/f501d91a1b7ba2dfba5082cbdb54d1f0528070a6))
+* **gitlab-ci:** use GitLab CI as Travis CI replacement ([2ea7839](https://github.com/saltstack-formulas/systemd-formula/commit/2ea7839a94d530587e6d533bf4be398195783265))
+* **kitchen+ci:** use latest pre-salted images (after CVE) [skip ci] ([0205d11](https://github.com/saltstack-formulas/systemd-formula/commit/0205d118dbabc387dd7b2e5cad6f4d8985aba749))
+* **kitchen+gitlab-ci:** use latest pre-salted images [skip ci] ([3b80bae](https://github.com/saltstack-formulas/systemd-formula/commit/3b80bae4c96006b06d65f2e060370198f923db6e))
+* **kitchen+travis:** use `tiamat` pre-salted images [skip ci] ([580d3b9](https://github.com/saltstack-formulas/systemd-formula/commit/580d3b92958f161150d30a2afaad0ad87bed17f9))
+* **pre-commit:** add to formula [skip ci] ([997a1f1](https://github.com/saltstack-formulas/systemd-formula/commit/997a1f12c7763a3a1899d8499ab093dd0a0b4085))
+* **pre-commit:** enable/disable `rstcheck` as relevant [skip ci] ([cdc702a](https://github.com/saltstack-formulas/systemd-formula/commit/cdc702af5c1f9582a119ea5705bc7300074cc7f9))
+* **pre-commit:** finalise `rstcheck` configuration [skip ci] ([389b253](https://github.com/saltstack-formulas/systemd-formula/commit/389b253df6550b7be33d512429f7144b9fa5f3c9))
+* **pre-commit:** update hook for `rubocop` [skip ci] ([bc5d74e](https://github.com/saltstack-formulas/systemd-formula/commit/bc5d74ebe06a735852489124113f54ec7f256a6f))
+
+
+### Features
+
+* **unit:** add dropin capability for unit files ([3d8abee](https://github.com/saltstack-formulas/systemd-formula/commit/3d8abeeda011ffcde92b946e5599ea5201395ead))
+
+
+### Tests
+
+* standardise use of `share` suite & `_mapdata` state [skip ci] ([c815870](https://github.com/saltstack-formulas/systemd-formula/commit/c815870d1ad2a244c9c9148ed52f67ef86bb38c6))
+
 # [0.17.0](https://github.com/saltstack-formulas/systemd-formula/compare/v0.16.0...v0.17.0) (2020-09-19)
 
 
