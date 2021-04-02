@@ -7,10 +7,16 @@ include:
   {% if unittype in unittypes.get('Valid') %}
     {% for unit, unitconfig in units.items() %}
       {% set unit_status = 'disable' if unitconfig.enabled is defined and unitconfig.enabled == false else 'enable' %}
+      {% set dropin = unitconfig.dropin | default(false) %}
 
 systemd_systemd_units_file_{{ unit }}_{{ unittype }}:
   file.managed:
+      {%- if dropin %}
+    - name: /etc/systemd/system/{{ unit }}.{{ unittype }}.d/salt-override.conf
+    - makedirs: True
+      {%- else %}
     - name: /etc/systemd/system/{{ unit }}.{{ unittype }}
+      {%- endif %}
     - template: jinja
     - source: salt://systemd/units/unit.jinja
     - context:
