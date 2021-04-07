@@ -14,11 +14,11 @@ control 'Systemd Networkd' do
     it { should_not exist }
   end
 
-  describe file('/etc/systemd/network/eth0.network') do
+  describe file('/etc/systemd/network/br0.network') do
     its('type') { should eq :file }
-    its('mode') { should cmp '0644' }
-    its('owner') { should eq 'root' }
-    its('group') { should eq 'root' }
+    its('mode') { should cmp '0600' }
+    its('owner') { should eq 'systemd-network' }
+    its('group') { should eq 'systemd-network' }
   end
 
   describe file('/etc/systemd/network/br0.netdev') do
