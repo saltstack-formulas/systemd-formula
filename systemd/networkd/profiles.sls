@@ -5,8 +5,10 @@
 {%- set networkd = systemd.get('networkd', {}) %}
 {%- set profiles = networkd.get('profiles', {}) %}
 
+{%- if networkd.networkctl_reload %}
 include:
-  - systemd.reload
+  - systemd.networkd.reload
+{%- endif %}
 
 {% if profiles is mapping %}
 {% for networkdprofile, types in profiles.items()  %}
@@ -23,8 +25,10 @@ include:
     - dir_mode: 755
     - context:
         config: {{ profileconfig|json }}
+{%- if networkd.networkctl_reload %}
     - watch_in:
-      - cmd: reload_systemd_configuration
-  {% endfor %}
-{% endfor %}
-{% endif %}
+      - cmd: systemd-networkd-reload-cmd-wait
+{%- endif %}
+  {%- endfor %}
+{%- endfor %}
+{%- endif %}
