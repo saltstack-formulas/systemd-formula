@@ -22,3 +22,6 @@ CentOS Linux-8:
 Fedora-33:
   networkd:
     pkg: systemd-networkd
+Fedora-34:
+  networkd:
+    pkg: systemd-networkd
