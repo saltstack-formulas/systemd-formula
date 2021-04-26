@@ -19,7 +19,10 @@ systemd:
       PollIntervalMaxSec: 2048
 
   networkd:
+    # networkctl reload is available since systemd 244
+    networkctl_reload: false
     pkg: {}
+    fileattr: {}
     path: /etc/systemd/network
     service: systemd-networkd
     wait_online: true
