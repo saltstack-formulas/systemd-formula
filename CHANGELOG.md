@@ -1,5 +1,28 @@
 # Changelog
 
+# [0.19.0](https://github.com/saltstack-formulas/systemd-formula/compare/v0.18.0...v0.19.0) (2021-04-26)
+
+
+### Bug Fixes
+
+* **fedora:** ensure `networkd` package installed for Fedora 34 [skip ci] ([a93cd95](https://github.com/saltstack-formulas/systemd-formula/commit/a93cd956da7822c2c70a1e90d56ffe4c4510c08c))
+* **networkd:** use networkctl to reload config changes ([f4be1ed](https://github.com/saltstack-formulas/systemd-formula/commit/f4be1ed291048cb60e1162844fe05618072aabbf))
+
+
+### Code Refactoring
+
+* **networkd/template:** remove empty lines with spaces ([6fb14d5](https://github.com/saltstack-formulas/systemd-formula/commit/6fb14d5815d57d47293440d1b757c2783c624a29))
+
+
+### Continuous Integration
+
+* **kitchen+gitlab:** adjust matrix to add `3003` [skip ci] ([d77297e](https://github.com/saltstack-formulas/systemd-formula/commit/d77297e87be905ebb8ff592fb4f25402f9cc8689))
+
+
+### Features
+
+* **networkd:** allow configuration of file attributes ([34dd64b](https://github.com/saltstack-formulas/systemd-formula/commit/34dd64b6a0baf451a06a97168b68d269ef3ff396))
+
 # [0.18.0](https://github.com/saltstack-formulas/systemd-formula/compare/v0.17.0...v0.18.0) (2021-04-02)
 
 
