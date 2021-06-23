@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.19.1](https://github.com/saltstack-formulas/systemd-formula/compare/v0.19.0...v0.19.1) (2021-06-23)
+
+
+### Bug Fixes
+
+* **units:** start `path` units as well as `service` units ([99b4863](https://github.com/saltstack-formulas/systemd-formula/commit/99b48639b3750a26c7c55d4f249bef6d65521ba5))
+
+
+### Continuous Integration
+
+* **kitchen+gitlab:** remove Ubuntu 16.04 & Fedora 32 (EOL) [skip ci] ([9034dae](https://github.com/saltstack-formulas/systemd-formula/commit/9034daed4520c58f67b10c544a93857f841eebaf))
+* add `arch-master` to matrix and update `.travis.yml` [skip ci] ([c2c7e8b](https://github.com/saltstack-formulas/systemd-formula/commit/c2c7e8b72e3d5ddc885504bd774db74b46533be4))
+
 # [0.19.0](https://github.com/saltstack-formulas/systemd-formula/compare/v0.18.0...v0.19.0) (2021-04-26)
 
 
