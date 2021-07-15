@@ -7,6 +7,16 @@
 # Only add an `osfinger` which is/will be supported by the formula
 # (empty `osfinger`s do not need to be listed, just added here as an example).
 ---
+Debian-11:
+  pkgs_extra:
+    - python3-systemd
+  # TODO: Return back to this and check if the following two lines can be removed,
+  #       in order to use the setting in `defaults.yaml` instead (i.e. `true`).
+  #       Using it for this initial phase of introducing pre-release Bullseye CI
+  #       testing; the `systemd-networkd-wait-online` service doesn't start.
+  networkd:
+    wait_online: false
+
 Ubuntu-20.04:
   pkgs_extra:
     - python3-systemd
