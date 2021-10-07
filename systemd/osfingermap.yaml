@@ -21,6 +21,14 @@ Ubuntu-20.04:
   pkgs_extra:
     - python3-systemd
 Ubuntu-18.04: {}
+
+CentOS Stream-8:
+  pkgs_lib:
+    - systemd-libs
+  pkgs_extra:
+    - python3-systemd
+  resolved:
+    pkg: {}
 CentOS Linux-8:
   pkgs_lib:
     - systemd-libs
