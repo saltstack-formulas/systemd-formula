@@ -11,7 +11,6 @@ Debian:
   pkgs_libs:
     - libsystemd0
   pkgs_extra:
-    - python-systemd
     - python3-systemd
   resolved:
     pkg: libnss-resolve
@@ -21,9 +20,8 @@ RedHat:
   pkgs_libs:
     - systemd-libs
   pkgs_extra:
-    - systemd-python
+    - python3-systemd
   resolved:
-    pkg: systemd-resolved
     resolv_target: /run/systemd/resolve/resolv.conf
   networkd:
     pkg: systemd-networkd
@@ -33,7 +31,6 @@ Arch:
     - systemd-libs
   pkgs_extra:
     - python-systemd
-    - python2-systemd
   resolved:
     resolv_target: /run/systemd/resolve/stub-resolv.conf
 
@@ -42,5 +39,12 @@ Suse:
     - libsystemd0
   pkgs_extra:
     - util-linux-systemd
+  networkd:
+    pkg: systemd-network
   resolved:
     pkg: nss-resolve
+
+Gentoo:
+  pkg: sys-apps/systemd
+  pkgs_extra:
+    - dev-python/python-systemd

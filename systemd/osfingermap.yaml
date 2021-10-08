@@ -7,39 +7,17 @@
 # Only add an `osfinger` which is/will be supported by the formula
 # (empty `osfinger`s do not need to be listed, just added here as an example).
 ---
-Debian-11:
+# os_family/os: RedHat/CentOS
+CentOS Linux-7:
   pkgs_extra:
-    - python3-systemd
-  # TODO: Return back to this and check if the following two lines can be removed,
-  #       in order to use the setting in `defaults.yaml` instead (i.e. `true`).
-  #       Using it for this initial phase of introducing pre-release Bullseye CI
-  #       testing; the `systemd-networkd-wait-online` service doesn't start.
-  networkd:
-    wait_online: false
+    - systemd-python
 
-Ubuntu-20.04:
+# os_family/os: RedHat/Amazon
+Amazon Linux-2:
   pkgs_extra:
-    - python3-systemd
-Ubuntu-18.04: {}
+    - systemd-python
 
-CentOS Stream-8:
-  pkgs_lib:
-    - systemd-libs
+# os_family/os: RedHat/OEL
+Oracle Linux Server-7:
   pkgs_extra:
-    - python3-systemd
-  resolved:
-    pkg: {}
-CentOS Linux-8:
-  pkgs_lib:
-    - systemd-libs
-  pkgs_extra:
-    - python3-systemd
-  resolved:
-    pkg: {}
-
-Fedora-33:
-  networkd:
-    pkg: systemd-networkd
-Fedora-34:
-  networkd:
-    pkg: systemd-networkd
+    - systemd-python

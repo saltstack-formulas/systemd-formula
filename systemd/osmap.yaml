@@ -9,12 +9,5 @@
 ---
 # os_family: RedHat
 Fedora:
-  pkgs_libs:
-    - systemd-libs
-  pkgs_extra:
-    - python3-systemd
   networkd:
     networkctl_reload: true
-    pkg: {}
-  resolved:
-    pkg: {}
