@@ -1,6 +1,6 @@
 rsync_test_package:
   pkg.installed:
-    - name: rsync
+    - name: {{ 'net-misc/rsync' if grains.os_family == 'Gentoo' else 'rsync' }}
 
 rsync_test_file:
   file.managed:
