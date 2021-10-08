@@ -2,6 +2,27 @@
 Changelog
 =========
 
+`0.20.0 <https://github.com/saltstack-formulas/systemd-formula/compare/v0.19.1...v0.20.0>`_ (2021-10-08)
+------------------------------------------------------------------------------------------------------------
+
+Continuous Integration
+^^^^^^^^^^^^^^^^^^^^^^
+
+
+* **3003.1:** update inc. AlmaLinux, Rocky & ``rst-lint`` [skip ci] (\ `73c1b61 <https://github.com/saltstack-formulas/systemd-formula/commit/73c1b610f3dd430bd634febc8296b6a654967d6e>`_\ )
+* **gemfile+lock:** use ``ssf`` customised ``inspec`` repo [skip ci] (\ `b9fc05c <https://github.com/saltstack-formulas/systemd-formula/commit/b9fc05c03322e4ec4f9c91ed67e999be2052eaf4>`_\ )
+* **kitchen:** move ``provisioner`` block & update ``run_command`` [skip ci] (\ `04bb311 <https://github.com/saltstack-formulas/systemd-formula/commit/04bb311059785da05001d80aac577a9cbfcd30be>`_\ )
+* **kitchen+ci:** update with latest ``3003.2`` pre-salted images [skip ci] (\ `69f215f <https://github.com/saltstack-formulas/systemd-formula/commit/69f215f0b8b11b576b6760e00a19783e48e7d814>`_\ )
+* **kitchen+ci:** update with latest CVE pre-salted images [skip ci] (\ `a745088 <https://github.com/saltstack-formulas/systemd-formula/commit/a74508838fc4158c501e2092600fd475963efafd>`_\ )
+* add Debian 11 Bullseye & update ``yamllint`` configuration [skip ci] (\ `9e958b0 <https://github.com/saltstack-formulas/systemd-formula/commit/9e958b0aed9fac78b7a6eaede726411d80fdf32f>`_\ )
+
+Features
+^^^^^^^^
+
+
+* **centos-stream:** add Centos Stream support (\ `cdddd55 <https://github.com/saltstack-formulas/systemd-formula/commit/cdddd55e4921d0e2a1d1cf3afaf4211ca8cae927>`_\ )
+* **osfingermap:** add Debian 11 support (w/o ``wait_online``\ ) [skip ci] (\ `d24fd3f <https://github.com/saltstack-formulas/systemd-formula/commit/d24fd3f606e8de56af1a445e2685236c3cce57b3>`_\ )
+
 `0.19.1 <https://github.com/saltstack-formulas/systemd-formula/compare/v0.19.0...v0.19.1>`_ (2021-06-23)
 ------------------------------------------------------------------------------------------------------------
 
