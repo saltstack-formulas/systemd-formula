@@ -7,15 +7,24 @@
 # Only add an `osfinger` which is/will be supported by the formula
 # (empty `osfinger`s do not need to be listed, just added here as an example).
 ---
+# os_family/os: Debian/Debian
+Debian-9:
+  networkd:
+    wait_online: true
+
 # os_family/os: RedHat/CentOS
 CentOS Linux-7:
   pkgs_extra:
     - systemd-python
+  networkd:
+    wait_online: true
 
 # os_family/os: RedHat/Amazon
 Amazon Linux-2:
   pkgs_extra:
     - systemd-python
+  networkd:
+    wait_online: true
 
 # os_family/os: RedHat/OEL
 Oracle Linux Server-7:

@@ -2,6 +2,7 @@
 {%- from "systemd/libtofs.jinja" import files_switch with context -%}
 
 {%- set networkd = systemd.get('networkd', {}) %}
+{%- set service_wait_online = 'systemd-networkd-wait-online' %}
 
 networkd:
   {%- if networkd.pkg %}
@@ -31,8 +32,11 @@ networkd:
     - enable: True
 
 {%- if networkd.wait_online %}
+wait_online-service-enabled:
+  service.enabled:
+    - name: {{ service_wait_online }}
+
 wait_online:
   service.running:
-    - name: systemd-networkd-wait-online
-    - enable: True
+    - name: {{ service_wait_online }}
 {%- endif %}
