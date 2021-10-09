@@ -2,6 +2,28 @@
 Changelog
 =========
 
+`0.21.0 <https://github.com/saltstack-formulas/systemd-formula/compare/v0.20.0...v0.21.0>`_ (2021-10-09)
+------------------------------------------------------------------------------------------------------------
+
+Bug Fixes
+^^^^^^^^^
+
+
+* **rsync_test_package:** use correct package for Gentoo (\ `b787713 <https://github.com/saltstack-formulas/systemd-formula/commit/b787713805d4a7c9f9efdd0e3de6123f2b3cd534>`_\ )
+
+Continuous Integration
+^^^^^^^^^^^^^^^^^^^^^^
+
+
+* **gitlab-ci:** enable all ``master`` platforms except ``oraclelinux-7`` (\ `ad867bb <https://github.com/saltstack-formulas/systemd-formula/commit/ad867bb701f43c63ca6ee49525d4b47dc28cd4c0>`_\ )
+
+Features
+^^^^^^^^
+
+
+* **os*map.yaml:** restructure across all platforms (\ `10a6c24 <https://github.com/saltstack-formulas/systemd-formula/commit/10a6c241d38c040825c3b6b22c7223ebe9a50041>`_\ )
+* **wait_online:** use separate ``enabled`` & ``running`` states (\ `a42fa97 <https://github.com/saltstack-formulas/systemd-formula/commit/a42fa9711b1be4e6594a3819b206bcdeeacdc297>`_\ )
+
 `0.20.0 <https://github.com/saltstack-formulas/systemd-formula/compare/v0.19.1...v0.20.0>`_ (2021-10-08)
 ------------------------------------------------------------------------------------------------------------
 
