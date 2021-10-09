@@ -25,7 +25,7 @@ systemd:
     fileattr: {}
     path: /etc/systemd/network
     service: systemd-networkd
-    wait_online: true
+    wait_online: false
 
   resolved:
     config_source: file
