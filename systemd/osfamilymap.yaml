@@ -42,7 +42,7 @@ Suse:
   networkd:
     pkg: systemd-network
   resolved:
-    pkg: nss-resolve
+    resolv_target: /run/systemd/resolve/stub-resolv.conf
 
 Gentoo:
   pkg: sys-apps/systemd
