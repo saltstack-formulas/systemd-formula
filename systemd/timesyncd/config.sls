@@ -45,7 +45,7 @@ timesyncd:
       - service: timesyncd
     - watch_in:
       - cmd: timesyncd
-  cmd.wait:
+  cmd.wait:  # noqa: 213
     - name: timedatectl set-ntp true
     - runas: root
   service.running:
