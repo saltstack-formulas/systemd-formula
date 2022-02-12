@@ -2,6 +2,23 @@
 Changelog
 =========
 
+`0.21.1 <https://github.com/saltstack-formulas/systemd-formula/compare/v0.21.0...v0.21.1>`_ (2022-02-12)
+------------------------------------------------------------------------------------------------------------
+
+Bug Fixes
+^^^^^^^^^
+
+
+* **package:** remove nss-resolve package, and set resolve target (\ `207ae7f <https://github.com/saltstack-formulas/systemd-formula/commit/207ae7f678a9ade9f95d60edce58725f6ad39622>`_\ )
+
+Continuous Integration
+^^^^^^^^^^^^^^^^^^^^^^
+
+
+* **gemfile:** allow rubygems proxy to be provided as an env var [skip ci] (\ `578fcd4 <https://github.com/saltstack-formulas/systemd-formula/commit/578fcd48011712df265e585771886c5c357ff19f>`_\ )
+* **kitchen+ci:** update with ``3004`` pre-salted images/boxes [skip ci] (\ `afa6a36 <https://github.com/saltstack-formulas/systemd-formula/commit/afa6a36fb84bdd36009f932e3d281796923e494e>`_\ )
+* **kitchen+gitlab:** update for new pre-salted images [skip ci] (\ `c6c172d <https://github.com/saltstack-formulas/systemd-formula/commit/c6c172db02aa162d474ab35cc68ee4a6e73cfc23>`_\ )
+
 `0.21.0 <https://github.com/saltstack-formulas/systemd-formula/compare/v0.20.0...v0.21.0>`_ (2021-10-09)
 ------------------------------------------------------------------------------------------------------------
 
