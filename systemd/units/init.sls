@@ -30,7 +30,7 @@ systemd_systemd_units_cmd_enable_or_disable_{{ unit }}_{{ unittype }}:
     - watch:
       - cmd: reload_systemd_configuration
 
-      {% if (unittype == 'service' or unittype == 'path') %}
+      {% if (unittype == 'service' or unittype == 'path' or unittype == 'timer') %}
         {% set activation_status = unitconfig.status if unitconfig.status is defined and unitconfig.status == 'start' else 'stop' %}
 systemd_systemd_units_activate_or_deactivate_{{ unit }}_{{ unittype }}:
   cmd.wait:  # noqa: 213
